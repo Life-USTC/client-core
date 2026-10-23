@@ -47,6 +47,8 @@ jobs:
           xcodebuild test -scheme LifeClientCore \
             -destination 'platform=iOS Simulator,name=iPhone 17' \
             -resultBundlePath ../.build/apple-tests.xcresult -quiet
+      - name: Verify released Swift package
+        run: swift build
       - name: Package framework
         run: |
           mkdir -p dist
