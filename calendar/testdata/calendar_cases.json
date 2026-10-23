@@ -1,0 +1,25 @@
+{
+  "bounds": [
+    { "name": "Shanghai day after UTC midnight boundary", "period": "day", "anchor": "2026-09-16T23:30:00Z", "firstWeekday": 1, "from": "2026-09-17", "to": "2026-09-17" },
+    { "name": "Monday week after UTC midnight boundary", "period": "week", "anchor": "2026-09-16T23:30:00Z", "firstWeekday": 1, "from": "2026-09-14", "to": "2026-09-20" },
+    { "name": "Sunday week after UTC midnight boundary", "period": "week", "anchor": "2026-09-16T23:30:00Z", "firstWeekday": 0, "from": "2026-09-13", "to": "2026-09-19" },
+    { "name": "Public Sunday starts a new week", "period": "week", "anchor": "2026-10-25T04:00:00Z", "firstWeekday": 0, "from": "2026-10-25", "to": "2026-10-31" },
+    { "name": "Personal Sunday ends the Monday week", "period": "week", "anchor": "2026-10-25T04:00:00Z", "firstWeekday": 1, "from": "2026-10-19", "to": "2026-10-25" },
+    { "name": "Complete September", "period": "month", "anchor": "2026-09-16T23:30:00Z", "firstWeekday": 1, "from": "2026-09-01", "to": "2026-09-30" },
+    { "name": "Leap February", "period": "month", "anchor": "2028-02-16T08:00:00Z", "firstWeekday": 0, "from": "2028-02-01", "to": "2028-02-29" },
+    { "name": "Non-leap February", "period": "month", "anchor": "2027-02-16T08:00:00Z", "firstWeekday": 1, "from": "2027-02-01", "to": "2027-02-28" },
+    { "name": "Sunday week across calendar year", "period": "week", "anchor": "2027-01-01T04:00:00Z", "firstWeekday": 0, "from": "2026-12-27", "to": "2027-01-02" },
+    { "name": "Monday week across calendar year", "period": "week", "anchor": "2027-01-01T04:00:00Z", "firstWeekday": 1, "from": "2026-12-28", "to": "2027-01-03" },
+    { "name": "Explicit Wednesday week", "period": "week", "anchor": "2026-10-23T04:00:00Z", "firstWeekday": 3, "from": "2026-10-21", "to": "2026-10-27" },
+    { "name": "Shanghai historical daylight saving", "period": "day", "anchor": "1986-07-01T15:30:00Z", "firstWeekday": 1, "from": "1986-07-02", "to": "1986-07-02" }
+  ],
+  "windows": [
+    { "name": "One inclusive day", "from": "2026-10-23", "to": "2026-10-23", "ranges": [{ "from": "2026-10-23", "to": "2026-10-23" }] },
+    { "name": "Leap year fits one 366-day window", "from": "2024-01-01", "to": "2024-12-31", "ranges": [{ "from": "2024-01-01", "to": "2024-12-31" }] },
+    { "name": "Ordinary year fits one window", "from": "2025-01-01", "to": "2025-12-31", "ranges": [{ "from": "2025-01-01", "to": "2025-12-31" }] },
+    { "name": "367 days leave one final day", "from": "2024-01-01", "to": "2025-01-01", "ranges": [{ "from": "2024-01-01", "to": "2024-12-31" }, { "from": "2025-01-01", "to": "2025-01-01" }] },
+    { "name": "Extended semester uses contiguous windows", "from": "2024-01-01", "to": "2025-01-02", "ranges": [{ "from": "2024-01-01", "to": "2024-12-31" }, { "from": "2025-01-01", "to": "2025-01-02" }] },
+    { "name": "Two complete windows across a leap year", "from": "2023-01-01", "to": "2025-01-01", "ranges": [{ "from": "2023-01-01", "to": "2024-01-01" }, { "from": "2024-01-02", "to": "2025-01-01" }] },
+    { "name": "Civil dates across daylight-saving changes", "from": "1986-05-01", "to": "1987-05-01", "ranges": [{ "from": "1986-05-01", "to": "1987-05-01" }] }
+  ]
+}
