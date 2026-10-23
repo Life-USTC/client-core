@@ -11,6 +11,17 @@ iOS consumes `mobile` through a generated XCFramework.
 See [the PRD and roadmap](docs/architecture.md). Cross-client delivery is tracked
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).
 
+Go clients use `github.com/Life-USTC/client-core/calendar` at `v0.1.0`.
+Apple clients add this repository as a Swift package and use the `LifeClientCore`
+product. Pin the full commit revision containing the root `Package.swift`;
+`v0.1.0` identifies the Go source and framework release and predates this Swift
+package manifest. The package downloads that release's XCFramework and verifies
+its checksum. Swift applications do not run the Go build tools.
+
+The release includes `source-commit.txt` and `LifeCore.xcframework.sha256` with
+the original CI archive. The Swift adapter source matches the release source;
+the later package manifest supplies distribution metadata.
+
 ```sh
 go test -race -count=1 ./...
 go vet ./...
