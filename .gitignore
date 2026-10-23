@@ -1,0 +1,9 @@
+/dist/
+/.build/
+/coverage.out
+/mobile/coverage.out
+/apple/.build/
+/apple/Frameworks/
+/apple/*.xcodeproj/
+/apple/Tests/LifeClientCoreTests/Fixtures/
+/apple/Package.resolved
