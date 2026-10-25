@@ -1,0 +1,497 @@
+{
+  "selectedEventsURL": "https://www.bb.ustc.edu.cn/webapps/calendar/calendarData/selectedCalendarEvents?start=&end=&course_id=&mode=personal?start=&end=&course_id=&mode=personal",
+  "pageURL": "https://www.bb.ustc.edu.cn/webapps/calendar/viewPersonal",
+  "calendarsURL": "https://www.bb.ustc.edu.cn/webapps/calendar/calendarData/calendars?mode=personal&course_id=",
+  "coursesURL": "https://www.bb.ustc.edu.cn/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_1_1",
+  "eventsURLs": [
+    {
+      "ids": [
+        "CS1001.01.2024FA",
+        "MATH2001.02.2024FA"
+      ],
+      "url": "https://www.bb.ustc.edu.cn/webapps/calendar/calendarData/events?start=0&end=4102444800000&course_id=&calendarIds=CS1001.01.2024FA,MATH2001.02.2024FA"
+    },
+    {
+      "ids": [],
+      "url": "https://www.bb.ustc.edu.cn/webapps/calendar/calendarData/events?start=0&end=4102444800000&course_id=&calendarIds="
+    }
+  ],
+  "gradesURLs": [
+    {
+      "id": "_123_1",
+      "url": "https://www.bb.ustc.edu.cn/webapps/gradebook/do/student/viewGrades?course_id=_123_1"
+    },
+    {
+      "id": "course +/中文",
+      "url": "https://www.bb.ustc.edu.cn/webapps/gradebook/do/student/viewGrades?course_id=course+%2B%2F%E4%B8%AD%E6%96%87"
+    }
+  ],
+  "calendarIDs": [
+    {
+      "name": "course-calendars-sorted-and-unique",
+      "response": "{\"calendars\":[{\"id\":\"PERSONAL\"},{\"id\":\"MATH2001.02.2024FA\"},{\"id\":\"CS1001.01.2024FA\"},{\"id\":\"INSTITUTION\"},{\"id\":\"CS1001.01.2024FA\"},{\"id\":\"\"},{}]}",
+      "ids": [
+        "CS1001.01.2024FA",
+        "MATH2001.02.2024FA"
+      ]
+    },
+    {
+      "name": "identifiers-not-trimmed-or-case-folded",
+      "response": "{\"calendars\":[{\"id\":\"personal\"},{\"id\":\" PERSONAL \"},{\"id\":\"  \"}]}",
+      "ids": [
+        "  ",
+        " PERSONAL ",
+        "personal"
+      ]
+    },
+    {
+      "name": "missing-calendars",
+      "response": "{}",
+      "ids": []
+    },
+    {
+      "name": "null-root",
+      "response": "null",
+      "ids": []
+    },
+    {
+      "name": "numeric-id-rejected",
+      "response": "{\"calendars\":[{\"id\":123}]}",
+      "error": true
+    },
+    {
+      "name": "array-root-rejected",
+      "response": "[]",
+      "error": true
+    },
+    {
+      "name": "trailing-json-rejected",
+      "response": "{} {}",
+      "error": true
+    }
+  ],
+  "calendarEvents": [
+    {
+      "name": "all-cli-fields-preserved",
+      "response": "[{\"id\":\"evt-1\",\"calendarId\":\"MATH3011.01.2023FA\",\"itemSourceId\":\"_77235_1\",\"title\":\" Homework 1 \",\"start\":\"2026-03-01T00:00:00Z\",\"end\":\"2026-03-15T23:59:59Z\",\"eventType\":\"Assignment\",\"calendarName\":\" Linear Algebra \",\"endDate\":\"ignored\",\"calendarNameLocalizable\":{\"rawValue\":\"ignored\"}}]",
+      "events": [
+        {
+          "id": "evt-1",
+          "calendarId": "MATH3011.01.2023FA",
+          "itemSourceId": "_77235_1",
+          "title": " Homework 1 ",
+          "start": "2026-03-01T00:00:00Z",
+          "end": "2026-03-15T23:59:59Z",
+          "eventType": "Assignment",
+          "calendarName": " Linear Algebra "
+        }
+      ]
+    },
+    {
+      "name": "duplicates-order-and-missing-fields",
+      "response": "[{\"id\":\"z\",\"title\":\"first\"},{\"id\":\"z\",\"title\":\"last\"},null]",
+      "events": [
+        {
+          "id": "z",
+          "title": "first"
+        },
+        {
+          "id": "z",
+          "title": "last"
+        },
+        {}
+      ]
+    },
+    {
+      "name": "selected-profile-does-not-fill-cli-fields",
+      "response": "[{\"endDate\":\"2026-03-15T00:00:00.000Z\",\"calendarNameLocalizable\":{\"rawValue\":\"Math\"}}]",
+      "events": [
+        {}
+      ]
+    },
+    {
+      "name": "empty-array",
+      "response": "[]",
+      "events": []
+    },
+    {
+      "name": "null-root",
+      "response": "null",
+      "events": null
+    },
+    {
+      "name": "stream-decoder-retains-first-value",
+      "response": "[] {}",
+      "events": []
+    },
+    {
+      "name": "numeric-string-field-rejected",
+      "response": "[{\"title\":95}]",
+      "error": true
+    },
+    {
+      "name": "object-root-rejected",
+      "response": "{}",
+      "error": true
+    },
+    {
+      "name": "malformed-json",
+      "response": "[{",
+      "error": true
+    }
+  ],
+  "selectedEvents": [
+    {
+      "name": "localized-course-and-raw-end-date",
+      "response": "[{\"id\":\"ignored\",\"title\":\" 作业 1 \",\"endDate\":\"2026-03-15T23:59:59.123Z\",\"calendarNameLocalizable\":{\"rawValue\":\" 线性代数 \"},\"calendarName\":\"not selected\",\"end\":\"not selected\",\"eventType\":\"graded\"}]",
+      "events": [
+        {
+          "title": " 作业 1 ",
+          "courseName": " 线性代数 ",
+          "endDate": "2026-03-15T23:59:59.123Z"
+        }
+      ]
+    },
+    {
+      "name": "cli-profile-fields-are-not-fallbacks",
+      "response": "[{\"title\":\"CLI event\",\"start\":\"start\",\"end\":\"2026-03-15T00:00:00Z\",\"calendarName\":\"Math\"}]",
+      "events": [
+        {
+          "title": "CLI event",
+          "courseName": "",
+          "endDate": ""
+        }
+      ]
+    },
+    {
+      "name": "order-duplicates-and-invalid-dates-preserved",
+      "response": "[{\"title\":\"z\",\"endDate\":\"invalid date\",\"calendarNameLocalizable\":{\"rawValue\":\"B\"}},{\"title\":\"a\",\"endDate\":\"2026-03-15T00:00:00.000Z\",\"calendarNameLocalizable\":{\"rawValue\":\"A\"}},{\"title\":\"z\",\"endDate\":\"invalid date\",\"calendarNameLocalizable\":{\"rawValue\":\"B\"}}]",
+      "events": [
+        {
+          "title": "z",
+          "courseName": "B",
+          "endDate": "invalid date"
+        },
+        {
+          "title": "a",
+          "courseName": "A",
+          "endDate": "2026-03-15T00:00:00.000Z"
+        },
+        {
+          "title": "z",
+          "courseName": "B",
+          "endDate": "invalid date"
+        }
+      ]
+    },
+    {
+      "name": "numbers-and-booleans-follow-string-value",
+      "response": "[{\"title\":95,\"endDate\":false,\"calendarNameLocalizable\":{\"rawValue\":true}},{\"title\":6.0,\"endDate\":1e2,\"calendarNameLocalizable\":{\"rawValue\":1.25}},{\"title\":0.0,\"endDate\":1e-7,\"calendarNameLocalizable\":{\"rawValue\":-3}}]",
+      "events": [
+        {
+          "title": "95",
+          "courseName": "true",
+          "endDate": "false"
+        },
+        {
+          "title": "6",
+          "courseName": "1.25",
+          "endDate": "100"
+        },
+        {
+          "title": "0",
+          "courseName": "-3",
+          "endDate": "1e-07"
+        }
+      ]
+    },
+    {
+      "name": "missing-and-nonscalar-fields-project-to-empty",
+      "response": "[{},{\"title\":null,\"endDate\":{},\"calendarNameLocalizable\":[]},{\"title\":[],\"endDate\":null,\"calendarNameLocalizable\":{\"rawValue\":{}}},null,17,true,\"entry\",[]]",
+      "events": [
+        {
+          "title": "",
+          "courseName": "",
+          "endDate": ""
+        },
+        {
+          "title": "",
+          "courseName": "",
+          "endDate": ""
+        },
+        {
+          "title": "",
+          "courseName": "",
+          "endDate": ""
+        },
+        {
+          "title": "",
+          "courseName": "",
+          "endDate": ""
+        },
+        {
+          "title": "",
+          "courseName": "",
+          "endDate": ""
+        },
+        {
+          "title": "",
+          "courseName": "",
+          "endDate": ""
+        },
+        {
+          "title": "",
+          "courseName": "",
+          "endDate": ""
+        },
+        {
+          "title": "",
+          "courseName": "",
+          "endDate": ""
+        }
+      ]
+    },
+    {
+      "name": "missing-titles-do-not-drop-valid-date",
+      "response": "[{\"endDate\":\"2026-03-15T00:00:00.000Z\"}]",
+      "events": [
+        {
+          "title": "",
+          "courseName": "",
+          "endDate": "2026-03-15T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "name": "empty-array",
+      "response": "[]",
+      "events": []
+    },
+    {
+      "name": "object-root-has-empty-array-value",
+      "response": "{\"events\":[{\"title\":\"not iterated\"}]}",
+      "events": []
+    },
+    {
+      "name": "null-fragment-rejected",
+      "response": "null",
+      "error": true
+    },
+    {
+      "name": "string-fragment-rejected",
+      "response": "\"event\"",
+      "error": true
+    },
+    {
+      "name": "number-fragment-rejected",
+      "response": "95",
+      "error": true
+    },
+    {
+      "name": "boolean-fragment-rejected",
+      "response": "true",
+      "error": true
+    },
+    {
+      "name": "malformed-json",
+      "response": "[{",
+      "error": true
+    },
+    {
+      "name": "trailing-json-rejected",
+      "response": "[] {}",
+      "error": true
+    }
+  ],
+  "courseIDs": [
+    {
+      "name": "launcher-course-links-and-last-match",
+      "html": "<a href=\"/webapps/blackboard/execute/launcher?type=Course&amp;id=_123_1\"> MATH3011.01.2023FA: Linear Algebra </a><a href=\"https://www.bb.ustc.edu.cn/webapps/blackboard/execute/launcher?type=Course&amp;id=_456_1\"> CS1001.01.2024FA : Computing </a><a href=\"/webapps/blackboard/execute/launcher?type=Course&amp;id=_789_1\">MATH3011.01.2023FA: New label</a>",
+      "ids": {
+        "MATH3011.01.2023FA": "_789_1",
+        "CS1001.01.2024FA": "_456_1"
+      }
+    },
+    {
+      "name": "unrelated-missing-and-malformed-links-ignored",
+      "html": "<a href=\"/other?type=Course&amp;id=_1_1\">A: Wrong route</a><a href=\"/webapps/blackboard/execute/launcher?type=Other&amp;id=_2_1\">B: Wrong type</a><a href=\"/webapps/blackboard/execute/launcher?type=Course\">C: Missing ID</a><a href=\"/webapps/blackboard/execute/launcher?type=Course&amp;id=_3_1\"> : Empty code</a><a href=\"%zz\">D: Broken URL</a>",
+      "ids": {}
+    },
+    {
+      "name": "empty-document",
+      "html": "",
+      "ids": {}
+    }
+  ],
+  "gradeStatuses": [
+    {
+      "name": "activity-precedence-grade-fallback-and-whitespace",
+      "html": "<div id=\"grades_wrapper\"><div id=\"77235\" class=\"sortable_item_row\"><div class=\"cell activity\"><span class=\"activityType\"> 已评分 </span></div><div class=\"cell gradeStatus\">fallback ignored</div></div><div id=\"59232\" class=\"sortable_item_row\"><div class=\"cell activity\"><span class=\"activityType\">  </span></div><div class=\"cell gradeStatus\"> Needs \n Grading </div></div><div id=\"88\" class=\"sortable_item_row\"><div class=\"cell activity\"><span class=\"activityType\">尚未评分</span><span class=\"activityType\">second ignored</span></div></div></div>",
+      "statuses": {
+        "_77235_1": "已评分",
+        "_59232_1": "Needs Grading",
+        "_88_1": "尚未评分"
+      }
+    },
+    {
+      "name": "scope-empty-ids-empty-status-and-last-match",
+      "html": "<div class=\"sortable_item_row\" id=\"outside\"><div class=\"cell gradeStatus\">outside</div></div><div id=\"grades_wrapper\"><div class=\"sortable_item_row\"><div class=\"cell gradeStatus\">no ID</div></div><div class=\"sortable_item_row\" id=\"empty\"></div><div class=\"sortable_item_row\" id=\" 42 \"><div class=\"cell gradeStatus\">first</div></div><div class=\"sortable_item_row\" id=\"42\"><div class=\"cell gradeStatus\">last</div></div></div>",
+      "statuses": {
+        "_42_1": "last"
+      }
+    },
+    {
+      "name": "empty-document",
+      "html": "",
+      "statuses": {}
+    }
+  ],
+  "calendarIdentities": [
+    {
+      "id": " MATH3011.01.2023FA ",
+      "lessonCode": "MATH3011.01",
+      "semesterCode": "2023FA"
+    },
+    {
+      "id": "CS.01.2026SP",
+      "lessonCode": "CS.01",
+      "semesterCode": "2026SP"
+    },
+    {
+      "id": "CS.01.2026SU",
+      "lessonCode": "CS.01",
+      "semesterCode": "2026SU"
+    },
+    {
+      "id": "CS.01.extra.2026FA",
+      "lessonCode": "CS.01.extra",
+      "semesterCode": "2026FA"
+    },
+    {
+      "id": " CS.2026FA ",
+      "lessonCode": "CS.2026FA",
+      "semesterCode": ""
+    },
+    {
+      "id": "CS.01.2026fa",
+      "lessonCode": "CS.01.2026fa",
+      "semesterCode": ""
+    },
+    {
+      "id": "CS.01.2026WI",
+      "lessonCode": "CS.01.2026WI",
+      "semesterCode": ""
+    },
+    {
+      "id": "CS.01.202FA",
+      "lessonCode": "CS.01.202FA",
+      "semesterCode": ""
+    },
+    {
+      "id": "CS.01.20x6FA",
+      "lessonCode": "CS.01.20x6FA",
+      "semesterCode": ""
+    },
+    {
+      "id": "",
+      "lessonCode": "",
+      "semesterCode": ""
+    }
+  ],
+  "batches": [
+    {
+      "name": "empty",
+      "ids": [],
+      "max": 9,
+      "batches": null
+    },
+    {
+      "name": "existing-budget",
+      "ids": [
+        "A123",
+        "BC456",
+        "DEF789",
+        "GHIJ000"
+      ],
+      "max": 9,
+      "batches": [
+        [
+          "A123"
+        ],
+        [
+          "BC456"
+        ],
+        [
+          "DEF789"
+        ],
+        [
+          "GHIJ000"
+        ]
+      ]
+    },
+    {
+      "name": "disabled-budget",
+      "ids": [
+        "A",
+        "B"
+      ],
+      "max": 0,
+      "batches": [
+        [
+          "A",
+          "B"
+        ]
+      ]
+    },
+    {
+      "name": "comma-counted",
+      "ids": [
+        "AA",
+        "BB"
+      ],
+      "max": 5,
+      "batches": [
+        [
+          "AA",
+          "BB"
+        ]
+      ]
+    },
+    {
+      "name": "oversize-identifier-kept",
+      "ids": [
+        "AAAA",
+        "B"
+      ],
+      "max": 3,
+      "batches": [
+        [
+          "AAAA"
+        ],
+        [
+          "B"
+        ]
+      ]
+    },
+    {
+      "name": "existing-next-batch-budget-accounting",
+      "ids": [
+        "AA",
+        "BB",
+        "C"
+      ],
+      "max": 4,
+      "batches": [
+        [
+          "AA"
+        ],
+        [
+          "BB"
+        ],
+        [
+          "C"
+        ]
+      ]
+    }
+  ]
+}

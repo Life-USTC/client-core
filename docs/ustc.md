@@ -84,6 +84,8 @@ unused parallel Swift model for the embedded CLI lesson details.
    association path with the iOS selected-calendar-events path. Adding statuses
    or new course associations to iOS requires observable acceptance alongside
    the extraction; server synchronization remains a client use case.
+   The [Blackboard extraction](ustc-blackboard.md) preserves the existing
+   endpoint-specific responses and does not add those iOS capabilities.
 4. **Graduate YJS1.** Move the existing CLI requests and projections, and connect
    the agreed iOS graduate capabilities. Its current `app.ustc.edu.cn` course
    lookup differs from CLI `yjs1.ustc.edu.cn`; this is not a mechanical endpoint

@@ -22,3 +22,4 @@ cp young/testdata/query_cases.json apple/Tests/LifeClientCoreTests/Fixtures/youn
 cp pagination/testdata/progress_cases.json apple/Tests/LifeClientCoreTests/Fixtures/page_progress_cases.json
 cp ustc/testdata/course_table_cases.json apple/Tests/LifeClientCoreTests/Fixtures/ustc_course_table_cases.json
 cp ustc/testdata/academic_cases.json apple/Tests/LifeClientCoreTests/Fixtures/ustc_academic_cases.json
+cp ustc/testdata/blackboard_cases.json apple/Tests/LifeClientCoreTests/Fixtures/ustc_blackboard_cases.json
