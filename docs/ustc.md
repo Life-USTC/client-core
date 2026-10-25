@@ -72,7 +72,7 @@ its string semester identifier to an integer at the adapter. The mobile bridge
 exposes the identifier collection currently needed by iOS; it does not add an
 unused parallel Swift model for the embedded CLI lesson details.
 
-## Remaining extraction sequence
+## Delivery sequence
 
 1. **Undergraduate course table in both clients.** Ship this slice and the
    versioned framework, preserving the existing static lecture import and CLI
@@ -104,7 +104,7 @@ unused parallel Swift model for the embedded CLI lesson details.
    The [CAS/service extraction](ustc-cas.md) retains the existing CLI form and
    native browser/service profiles without adding OTP submission.
 
-Known contract differences to resolve before their slices:
+Preserved client contract differences:
 
 | Area | Current difference |
 | --- | --- |
@@ -114,9 +114,9 @@ Known contract differences to resolve before their slices:
 | Blackboard | CLI combines explicit calendar IDs, events and grade status pages; iOS imports selected events with localized course names and end dates. |
 | Graduate | CLI uses YJS1 term codes and schedule/score/exam/homework endpoints. iOS currently uses the mobile app course-name lookup and static course matching. |
 
-These differences require source-backed fixtures and explicit consumer behavior,
-not speculative schema fallbacks. Existing fixtures are synthetic contract
-examples, not evidence of a successful live university login.
+These differences use explicit parser profiles and consumer tests, rather than
+schema fallbacks. Existing fixtures are synthetic contract examples, not evidence
+of a successful live university login.
 
 ## Verification and completion
 
