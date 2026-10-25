@@ -33,8 +33,8 @@ and the remaining university capabilities.
 See [the PRD and roadmap](docs/architecture.md). Initial shared-core delivery is tracked
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).
 
-Go clients use `github.com/Life-USTC/client-core/calendar` and
-`github.com/Life-USTC/client-core/young` at `v0.4.0`.
+Go clients import the `calendar`, `young`, `pagination` and `ustc` packages from
+`github.com/Life-USTC/client-core` at `v0.5.0`.
 Apple clients add this repository as a Swift package and use the `LifeClientCore`
 product. Pin the full distribution commit revision containing the updated root
 `Package.swift`; release tags identify the Go and framework source, while the
