@@ -1,0 +1,86 @@
+{
+  "requests": [
+    {
+      "name": "absent-values-have-no-defaults",
+      "query": {},
+      "parameters": {}
+    },
+    {
+      "name": "explicit-false-values",
+      "query": {"active": false, "dateUnknown": false, "timeBasis": "activity"},
+      "page": 1,
+      "pageSize": 10,
+      "parameters": {"active": "false", "dateUnknown": "false", "timeBasis": "activity", "page": "1", "pageSize": "10"}
+    },
+    {
+      "name": "explicit-true-values",
+      "query": {"active": true, "dateUnknown": true, "timeBasis": "registration"},
+      "pageSize": 20,
+      "parameters": {"active": "true", "dateUnknown": "true", "timeBasis": "registration", "pageSize": "20"}
+    },
+    {
+      "name": "all-filters-first-page",
+      "query": {"search": " 志愿 & robotics+夏/? ", "category": " 系列项目 ", "module": " 美 ", "activityLevel": " 校级 ", "organizerId": " org/1?tag=a&b=中 ", "active": false, "dateUnknown": false, "dateFrom": " 2026-09-01 ", "dateTo": " 2026-09-30 ", "timeBasis": "registration"},
+      "page": 1,
+      "pageSize": 100,
+      "parameters": {"search": "志愿 & robotics+夏/?", "category": "系列项目", "module": "美", "activityLevel": "校级", "organizerId": "org/1?tag=a&b=中", "active": "false", "dateUnknown": "false", "dateFrom": "2026-09-01", "dateTo": "2026-09-30", "timeBasis": "registration", "page": "1", "pageSize": "100"}
+    },
+    {
+      "name": "all-filters-second-page",
+      "query": {"search": " 志愿 & robotics+夏/? ", "category": " 系列项目 ", "module": " 美 ", "activityLevel": " 校级 ", "organizerId": " org/1?tag=a&b=中 ", "active": false, "dateUnknown": false, "dateFrom": " 2026-09-01 ", "dateTo": " 2026-09-30 ", "timeBasis": "registration"},
+      "page": 2,
+      "pageSize": 100,
+      "parameters": {"search": "志愿 & robotics+夏/?", "category": "系列项目", "module": "美", "activityLevel": "校级", "organizerId": "org/1?tag=a&b=中", "active": "false", "dateUnknown": "false", "dateFrom": "2026-09-01", "dateTo": "2026-09-30", "timeBasis": "registration", "page": "2", "pageSize": "100"}
+    },
+    {
+      "name": "blank-optional-text-is-omitted",
+      "query": {"search": " \t\n", "category": "  ", "module": "\t", "activityLevel": "\n", "organizerId": " ", "dateFrom": " ", "dateTo": " "},
+      "parameters": {}
+    },
+    {
+      "name": "single-date-bound-is-preserved",
+      "query": {"dateFrom": "2026-09-01T00:00:00+08:00"},
+      "parameters": {"dateFrom": "2026-09-01T00:00:00+08:00"}
+    },
+    {
+      "name": "explicit-page-without-size",
+      "query": {"search": "robotics"},
+      "page": 2,
+      "parameters": {"search": "robotics", "page": "2"}
+    },
+    {
+      "name": "present-zero-is-not-an-omitted-page",
+      "query": {},
+      "page": 0,
+      "pageSize": 0,
+      "parameters": {"page": "0", "pageSize": "0"}
+    },
+    {
+      "name": "caller-pagination-is-not-capped",
+      "query": {},
+      "page": 1001,
+      "pageSize": 101,
+      "parameters": {"page": "1001", "pageSize": "101"}
+    }
+  ],
+  "unknownDates": [
+    {
+      "name": "preserves-selected-filter-context",
+      "query": {"search": " 志愿 & robotics+夏/? ", "category": " 系列项目 ", "module": " 美 ", "activityLevel": " 校级 ", "organizerId": " org/1?tag=a&b=中 ", "active": false, "dateUnknown": false, "dateFrom": "2026-09-01", "dateTo": "2026-09-30", "timeBasis": "registration"},
+      "expectedQuery": {"search": " 志愿 & robotics+夏/? ", "category": " 系列项目 ", "module": " 美 ", "activityLevel": " 校级 ", "organizerId": " org/1?tag=a&b=中 ", "active": false, "dateUnknown": true, "timeBasis": "registration"},
+      "parameters": {"search": "志愿 & robotics+夏/?", "category": "系列项目", "module": "美", "activityLevel": "校级", "organizerId": "org/1?tag=a&b=中", "active": "false", "dateUnknown": "true", "timeBasis": "registration"}
+    },
+    {
+      "name": "empty-query-has-no-implicit-basis",
+      "query": {},
+      "expectedQuery": {"dateUnknown": true},
+      "parameters": {"dateUnknown": "true"}
+    },
+    {
+      "name": "already-unknown-remains-unknown",
+      "query": {"active": true, "dateUnknown": true, "timeBasis": "activity"},
+      "expectedQuery": {"active": true, "dateUnknown": true, "timeBasis": "activity"},
+      "parameters": {"active": "true", "dateUnknown": "true", "timeBasis": "activity"}
+    }
+  ]
+}

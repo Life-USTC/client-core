@@ -13,6 +13,11 @@ Week one contains the semester's first day; week bounds remain complete even
 when part of the week falls outside the semester. Adapters retain explicit
 meeting-date priority and semester inclusion rules.
 
+The `young` package projects public event filters into request parameters and
+switches a query to unknown dates while retaining its filter context. Optional
+booleans preserve false versus absence. Callers choose pagination, validate user
+input and aggregate responses; the core does not fetch or advance pages.
+
 See [the PRD and roadmap](docs/architecture.md). Cross-client delivery is tracked
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).
 
