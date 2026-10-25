@@ -8,6 +8,11 @@ The first slice provides inclusive calendar bounds, explicit week conventions,
 Shanghai civil dates and bounded request windows. Bot/CLI import `calendar`;
 iOS consumes `mobile` through a generated XCFramework.
 
+Teaching-week bounds and week numbers use the caller's explicit first weekday.
+Week one contains the semester's first day; week bounds remain complete even
+when part of the week falls outside the semester. Adapters retain explicit
+meeting-date priority and semester inclusion rules.
+
 See [the PRD and roadmap](docs/architecture.md). Cross-client delivery is tracked
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).
 
