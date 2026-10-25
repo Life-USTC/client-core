@@ -24,9 +24,10 @@ and collection completeness remain in each client. Its existing consumers
 include the CLI's shared reader across catalog, workspace and school endpoints
 and the Bot's Young activity reader.
 
-The `ustc` package shares undergraduate course-table request URLs, student
-identifier extraction and response parsing. Clients retain authentication,
-transport, persistence and empty-table policy. See the
+The `ustc` package shares undergraduate course-table, score, exam and Blackboard
+request and response rules. Explicit parser profiles preserve each client’s
+existing formats. Clients retain authentication, transport, persistence, native
+date conversion and empty-table policy. See the
 [USTC extraction PRD and roadmap](docs/ustc.md) for its two-client acceptance
 and the remaining university capabilities.
 
@@ -34,7 +35,7 @@ See [the PRD and roadmap](docs/architecture.md). Initial shared-core delivery is
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).
 
 Go clients import the `calendar`, `young`, `pagination` and `ustc` packages from
-`github.com/Life-USTC/client-core` at `v0.5.0`.
+`github.com/Life-USTC/client-core` at `v0.6.0`.
 Apple clients add this repository as a Swift package and use the `LifeClientCore`
 product. Pin the full distribution commit revision containing the updated root
 `Package.swift`; release tags identify the Go and framework source, while the
