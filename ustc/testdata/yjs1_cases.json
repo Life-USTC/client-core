@@ -1,0 +1,743 @@
+{
+  "urls": {
+    "scheduleApp": "https://yjs1.ustc.edu.cn/gsapp/sys/kbcxappustc/*default/index.do?THEME=blue&EMAP_LANG=zh&min=1#/xskbcx",
+    "scheduleTerms": "https://yjs1.ustc.edu.cn/gsapp/sys/kbcxappustc/modules/xskbcx/xnxqxxcx.do",
+    "scheduleRows": "https://yjs1.ustc.edu.cn/gsapp/sys/kbcxappustc/modules/xskbcx/xskbxxcx.do",
+    "scoreApp": "https://yjs1.ustc.edu.cn/gsapp/sys/wdcjapp/*default/index.do?THEME=blue&EMAP_LANG=zh&min=1#/wdcj",
+    "scoreInfo": "https://yjs1.ustc.edu.cn/gsapp/sys/wdcjapp/modules/wdcj/queryInfo.do",
+    "scoreProfile": "https://yjs1.ustc.edu.cn/gsapp/sys/wdcjapp/modules/wdcj/hqxh.do",
+    "scoreRows": "https://yjs1.ustc.edu.cn/gsapp/sys/wdcjapp/modules/wdcj/xscjcx.do",
+    "examApp": "https://yjs1.ustc.edu.cn/gsapp/sys/kssbappustc/*default/index.do?THEME=blue&EMAP_LANG=zh&min=1#/xskssbcx",
+    "examTerms": "https://yjs1.ustc.edu.cn/gsapp/sys/kssbappustc/modules/xskssbcx/hqxnxq.do",
+    "examRows": "https://yjs1.ustc.edu.cn/gsapp/sys/kssbappustc/modules/xskssbcx/xscxkssbxx.do",
+    "homeworkApp": "https://yjs1.ustc.edu.cn/gsapp/sys/wdzyappustc/*default/index.do?THEME=blue&EMAP_LANG=zh&min=1#/wdzy",
+    "homeworkTerms": "https://yjs1.ustc.edu.cn/gsapp/sys/wdzyappustc/modules/wdzy/hqxnxq.do",
+    "homeworkRows": "https://yjs1.ustc.edu.cn/gsapp/sys/wdzyappustc/modules/wdzy/wdzycx.do"
+  },
+  "forms": [
+    {
+      "name": "schedule terms",
+      "kind": "scheduleTerms",
+      "expected": {
+        "SFSY": [
+          "1"
+        ],
+        "pageSize": [
+          "100"
+        ],
+        "pageNumber": [
+          "1"
+        ]
+      }
+    },
+    {
+      "name": "schedule rows",
+      "kind": "schedule",
+      "semesterCode": "20252",
+      "expected": {
+        "querySetting": [
+          "[{\"name\":\"XNXQDM\",\"builder\":\"equal\",\"linkOpt\":\"AND\",\"builderList\":\"cbl_String\",\"value\":\"20252\"}]"
+        ],
+        "pageSize": [
+          "999"
+        ],
+        "pageNumber": [
+          "1"
+        ]
+      }
+    },
+    {
+      "name": "exam rows",
+      "kind": "exam",
+      "semesterCode": "20252",
+      "expected": {
+        "querySetting": [
+          "[{\"name\":\"XNXQDM\",\"caption\":\"学年学期\",\"builder\":\"m_value_equal\",\"linkOpt\":\"AND\",\"value\":\"20252\"},{\"name\":\"SBZT\",\"caption\":\"申报状态\",\"builder\":\"equal\",\"linkOpt\":\"AND\",\"value\":\"1\"}]"
+        ],
+        "pageSize": [
+          "999"
+        ],
+        "pageNumber": [
+          "1"
+        ]
+      }
+    },
+    {
+      "name": "score rows",
+      "kind": "score",
+      "expected": {
+        "pageSize": [
+          "999"
+        ],
+        "pageNumber": [
+          "1"
+        ]
+      }
+    },
+    {
+      "name": "homework terms",
+      "kind": "homeworkTerms",
+      "expected": {
+        "*order": [
+          "-XNDM,-XQDM"
+        ]
+      }
+    },
+    {
+      "name": "homework rows",
+      "kind": "homework",
+      "semesterCode": "20252",
+      "userID": "SA+12&34",
+      "expected": {
+        "XH": [
+          "SA+12&34"
+        ],
+        "querySetting": [
+          "[{\"name\":\"XNXQDM\",\"builder\":\"m_value_equal\",\"value\":\"20252\"}]"
+        ],
+        "pageSize": [
+          "999"
+        ],
+        "pageNumber": [
+          "1"
+        ]
+      }
+    },
+    {
+      "name": "empty semester preserves omitempty",
+      "kind": "schedule",
+      "semesterCode": "",
+      "expected": {
+        "querySetting": [
+          "[{\"name\":\"XNXQDM\",\"builder\":\"equal\",\"linkOpt\":\"AND\",\"builderList\":\"cbl_String\"}]"
+        ],
+        "pageSize": [
+          "999"
+        ],
+        "pageNumber": [
+          "1"
+        ]
+      }
+    }
+  ],
+  "parsers": [
+    {
+      "name": "terms-current-and-dates",
+      "kind": "terms",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"DM\":\"20251\",\"MC\":\"2025年秋季学期\",\"SFDQXQ\":\"0\",\"QSSJ\":\"2025-09-01\",\"JZSJ\":\"2026-01-20\"},{\"DM\":\"20252\",\"MC\":\"2026年春季学期\",\"SFDQXQ\":\"1\",\"QSSJ\":\"2026-02-23\",\"JZSJ\":\"2026-07-05\"}]}}}",
+      "expected": [
+        {
+          "id": 20251,
+          "code": "20251",
+          "semesterCn": "2025年秋季学期",
+          "semesterEn": "2025年秋季学期",
+          "startDate": "2025-09-01",
+          "endDate": "2026-01-20"
+        },
+        {
+          "id": 20252,
+          "code": "20252",
+          "semesterCn": "2026年春季学期",
+          "semesterEn": "2026年春季学期",
+          "startDate": "2026-02-23",
+          "endDate": "2026-07-05",
+          "isLast": true
+        }
+      ]
+    },
+    {
+      "name": "terms-code-name-fallbacks-and-order",
+      "kind": "terms",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"DM\":\"20253\"},{\"DM\":\"20252\"},{\"DM\":\"20251\"},{\"DM\":\"bad\",\"MC\":\" Display  Name \"},{\"DM\":\"20254\"},{\"DM\":\"2025\"},{\"DM\":\"abcd1\"}]}}}",
+      "expected": [
+        {
+          "id": 20253,
+          "code": "20253",
+          "semesterCn": "2026年夏季学期",
+          "semesterEn": "2026年夏季学期"
+        },
+        {
+          "id": 20252,
+          "code": "20252",
+          "semesterCn": "2026年春季学期",
+          "semesterEn": "2026年春季学期"
+        },
+        {
+          "id": 20251,
+          "code": "20251",
+          "semesterCn": "2025年秋季学期",
+          "semesterEn": "2025年秋季学期"
+        },
+        {
+          "id": 0,
+          "code": "bad",
+          "semesterCn": "Display  Name",
+          "semesterEn": "Display  Name"
+        },
+        {
+          "id": 20254,
+          "code": "20254",
+          "semesterCn": "20254",
+          "semesterEn": "20254"
+        },
+        {
+          "id": 2025,
+          "code": "2025",
+          "semesterCn": "2025",
+          "semesterEn": "2025"
+        },
+        {
+          "id": 0,
+          "code": "abcd1",
+          "semesterCn": "abcd1",
+          "semesterEn": "abcd1"
+        }
+      ]
+    },
+    {
+      "name": "curriculum-existing-example",
+      "kind": "curriculum",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"WID\":\"abc-row\",\"BJMC\":\"SA25113014.01\",\"KCDM\":\"Y0203220\",\"KCMC\":\"软件体系结构分析与设计\",\"PKSJDD\":\"周一 3-4节 软件楼101; 周三 7-8节 软件楼102\",\"RKJS\":\"张三、李四\",\"ZCMC\":\"1~8; 9~16\"}]}}}",
+      "expected": [
+        {
+          "semesterId": 20252,
+          "lessonCode": "SA25113014.01",
+          "courseCode": "Y0203220",
+          "courseName": "软件体系结构分析与设计",
+          "teachers": [
+            "张三",
+            "李四"
+          ],
+          "schedule": "周一 3-4节 软件楼101 [1-8周]; 周三 7-8节 软件楼102 [9-16周]"
+        }
+      ],
+      "semesterID": 20252
+    },
+    {
+      "name": "curriculum-fallback-sort-and-schedule-mismatch",
+      "kind": "curriculum",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"WID\":\" 42tail \",\"KCMC\":\" Zeta  Name \",\"RKJS\":\"Bob，Alice/Bob； Carol\",\"PKSJDD\":\" Monday ; Wednesday \",\"ZCMC\":\"1~8\"},{\"WID\":\"9\",\"BJMC\":\" A.1 \",\"KCDM\":\" CS 1 \",\"KCMC\":\"Alpha\",\"ZCMC\":\"1~16\"},{\"WID\":\"abc\",\"BJMC\":\"A.1\",\"KCMC\":\"Alpha\",\"PKSJDD\":\"Friday\"}]}}}",
+      "expected": [
+        {
+          "semesterId": 301,
+          "lessonId": 42,
+          "lessonCode": "42tail",
+          "courseName": "Zeta Name",
+          "teachers": [
+            "Alice",
+            "Bob",
+            "Carol"
+          ],
+          "schedule": "Monday ; Wednesday [1-8周]"
+        },
+        {
+          "semesterId": 301,
+          "lessonCode": "A.1",
+          "courseName": "Alpha",
+          "schedule": "Friday"
+        },
+        {
+          "semesterId": 301,
+          "lessonId": 9,
+          "lessonCode": "A.1",
+          "courseCode": "CS 1",
+          "courseName": "Alpha",
+          "schedule": "1-16"
+        }
+      ],
+      "semesterID": 301
+    },
+    {
+      "name": "scores-existing-example",
+      "kind": "scores",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"XNXQDM\":\"20252\",\"XNXQDM_DISPLAY\":\"2026年春季学期\",\"BJMC\":\"SA25113014.01\",\"KCDM\":\"Y0203220\",\"KCMC\":\"软件体系结构分析与设计\",\"CJFZDM_DISPLAY\":\"百分制\",\"CJJL_DISPLAY\":\"正常考试\",\"XF\":2.0,\"CJ\":87.0,\"JDZ\":3.7}]}}}",
+      "expected": {
+        "items": [
+          {
+            "semesterId": 20252,
+            "semesterName": "2026年春季学期",
+            "lessonCode": "SA25113014.01",
+            "courseCode": "Y0203220",
+            "courseName": "软件体系结构分析与设计",
+            "credits": 2,
+            "gradePoint": 3.7,
+            "score": "87",
+            "gradeText": "百分制 / 正常考试"
+          }
+        ]
+      }
+    },
+    {
+      "name": "scores-scalar-fallbacks-and-sort",
+      "kind": "scores",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"XNXQDM\":\"20251\",\"KCMC\":\" Zeta \",\"KCDM\":\" Z.1 \",\"XF\":\" 2.5 \",\"CJ\":\" Pass  With Merit \",\"JDZ\":\"bad\",\"CJFZDM_DISPLAY\":\" Normal \",\"CJJL_DISPLAY\":\"Normal\"},{\"XNXQDM\":\"20252\",\"KCMC\":\"Beta\",\"BJMC\":\" B.1 \",\"CJ\":0,\"JDZ\":\"3.0\"},{\"XNXQDM\":\"20252\",\"KCMC\":\"Alpha\",\"KCDM\":\"A.1\",\"CJ\":true,\"XF\":null},{\"XNXQDM\":\"bad\",\"KCMC\":\"Unknown\",\"CJ\":null}]}}}",
+      "expected": {
+        "items": [
+          {
+            "semesterId": 20252,
+            "semesterName": "2026年春季学期",
+            "courseName": "Alpha",
+            "courseCode": "A.1",
+            "lessonCode": "A.1",
+            "score": "true"
+          },
+          {
+            "semesterId": 20252,
+            "semesterName": "2026年春季学期",
+            "courseName": "Beta",
+            "lessonCode": "B.1",
+            "gradePoint": 3,
+            "score": "0"
+          },
+          {
+            "semesterId": 20251,
+            "semesterName": "2025年秋季学期",
+            "courseName": "Zeta",
+            "courseCode": "Z.1",
+            "lessonCode": "Z.1",
+            "credits": 2.5,
+            "score": "Pass With Merit",
+            "gradeText": "Normal"
+          },
+          {
+            "semesterId": 0,
+            "semesterName": "bad",
+            "courseName": "Unknown"
+          }
+        ]
+      }
+    },
+    {
+      "name": "scores-summary-profile-precedence",
+      "kind": "scores",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[]}}}",
+      "expected": {
+        "summary": {
+          "studentId": "profile-id",
+          "program": "Profile program",
+          "major": "Info major",
+          "department": "Profile department",
+          "advisor": "Profile advisor",
+          "grade": "2026",
+          "status": "Active student",
+          "expectedGraduation": "2029-06",
+          "averageGradePoint": 3.75
+        },
+        "items": []
+      },
+      "infoResponse": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"XH\":\" info-id \",\"PYCCDM_DISPLAY\":\" Info program \",\"ZYDM_DISPLAY\":\" Info major \",\"YXDM_DISPLAY\":\" Info department \",\"DSXM\":\" Info advisor \",\"NJDM_DISPLAY\":\" Info grade \",\"ZCZT_DISPLAY\":\" Info status \",\"YJBYSJ\":\"2028-06\"},{\"XH\":\"ignored\"}]}}}",
+      "profileResponse": "{\"code\": \"0\", \"XH\": \" profile-id \", \"xscjxx\": {\"PYCCDM_DISPLAY\": \" Profile program \", \"ZYDM_DISPLAY\": \"\", \"YXDM_DISPLAY\": \" Profile department \", \"DSXM\": \" Profile advisor \", \"NJDM_DISPLAY\": \"2026\", \"ZCZT_DISPLAY\": \" Active  student \", \"YJBYSJ\": \"2029-06\", \"PJJDZ\": \" 3.75 \"}}"
+    },
+    {
+      "name": "scores-summary-first-info-and-text-gpa",
+      "kind": "scores",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[]}}}",
+      "expected": {
+        "summary": {
+          "studentId": "first",
+          "averageGradePoint": "unknown"
+        },
+        "items": []
+      },
+      "infoResponse": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"XH\":\"first\"},{\"XH\":\"second\"}]}}}",
+      "profileResponse": "{\"xscjxx\":{\"PJJDZ\":\" unknown \"}}"
+    },
+    {
+      "name": "exams-fields-fallbacks-and-sort",
+      "kind": "exams",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"BJMC\":\"Z.1\",\"KCDM\":\"ignored\",\"KCMC\":\" Zeta \",\"KSKSSJ\":\"2026-06-01 09:00\",\"KSJSSJ\":\"2026-06-01 11:00\",\"KSDD\":\"Room  1\",\"KSXS\":\"raw type\",\"KSXS_DISPLAY\":\" Display \",\"SBZT\":\"1\",\"SBZT_DISPLAY\":\" Approved \",\"ZWH\":\" 7 \"},{\"KCDM\":\"A.1\",\"KCMC\":\"Alpha\",\"KSKSSJ\":\"2026-05-01 10:00\",\"KSXS\":\"Written\",\"SBZT\":\"0\"},{\"KCMC\":\"No date\"}]}}}",
+      "expected": [
+        {
+          "courseName": "No date"
+        },
+        {
+          "courseName": "Alpha",
+          "lessonCode": "A.1",
+          "examType": "Written",
+          "dateTime": "2026-05-01 10:00",
+          "status": "0"
+        },
+        {
+          "courseName": "Zeta",
+          "lessonCode": "Z.1",
+          "examType": "Display",
+          "dateTime": "2026-06-01 09:00 - 2026-06-01 11:00",
+          "location": "Room 1",
+          "seat": "7",
+          "status": "Approved"
+        }
+      ]
+    },
+    {
+      "name": "homework-existing-example",
+      "kind": "homework",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"WID\":\"1\",\"KCMC\":\"课程A\",\"ZYMC\":\"作业A\",\"ZYKSSJ\":\"2026-03-01 10:00:00\",\"ZYJZSJ\":\"2026-03-09 23:59:00\"},{\"WID\":\"2\",\"XSZYWID\":\"sub-2\",\"KCMC\":\"课程B\",\"ZYMC\":\"作业B\",\"ZYKSSJ\":\"2026-03-01 10:00:00\",\"ZYJZSJ\":\"2026-03-20 23:59:00\"},{\"WID\":\"3\",\"KCMC\":\"课程C\",\"ZYMC\":\"作业C\",\"ZYKSSJ\":\"2026-03-01 10:00:00\",\"ZYJZSJ\":\"2026-03-20 23:59:00\",\"CJ\":95}]}}}",
+      "expected": [
+        {
+          "id": "1",
+          "courseName": "课程A",
+          "title": "作业A",
+          "startAt": "2026-03-01 10:00:00",
+          "endAt": "2026-03-09 23:59:00",
+          "status": "overdue"
+        },
+        {
+          "id": "sub-2",
+          "courseName": "课程B",
+          "title": "作业B",
+          "startAt": "2026-03-01 10:00:00",
+          "endAt": "2026-03-20 23:59:00",
+          "status": "submitted"
+        },
+        {
+          "id": "3",
+          "courseName": "课程C",
+          "title": "作业C",
+          "startAt": "2026-03-01 10:00:00",
+          "endAt": "2026-03-20 23:59:00",
+          "status": "graded"
+        }
+      ],
+      "now": "2026-03-10T12:00:00+08:00",
+      "offsetSeconds": 28800
+    },
+    {
+      "name": "homework-status-priority-boundaries-and-raw-dates",
+      "kind": "homework",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"WID\":\"1\",\"ZYMC\":\"Unknown dates\",\"ZYKSSJ\":\" unknown \",\"ZYJZSJ\":\"bad\"},{\"WID\":\"2\",\"ZYMC\":\"Upcoming\",\"ZYKSSJ\":\"2026-03-11\",\"ZYJZSJ\":\"2026-03-20\"},{\"WID\":\"3\",\"ZYMC\":\"Exactly start\",\"ZYKSSJ\":\"2026-03-10 12:00\",\"ZYJZSJ\":\"2026-03-20\"},{\"WID\":\"4\",\"ZYMC\":\"Exactly deadline\",\"ZYJZSJ\":\"2026-03-10 12:00:00\"},{\"WID\":\"5\",\"ZYMC\":\"Uploaded\",\"ZYSCSJ\":\" yes \",\"ZYJZSJ\":\"2026-03-01\"},{\"WID\":\"6\",\"ZYMC\":\"Zero is graded\",\"CJ\":0,\"XSZYWID\":\"submitted\",\"ZYJZSJ\":\"2026-03-01\"}]}}}",
+      "expected": [
+        {
+          "id": "5",
+          "title": "Uploaded",
+          "endAt": "2026-03-01",
+          "status": "submitted"
+        },
+        {
+          "id": "submitted",
+          "title": "Zero is graded",
+          "endAt": "2026-03-01",
+          "status": "graded"
+        },
+        {
+          "id": "4",
+          "title": "Exactly deadline",
+          "endAt": "2026-03-10 12:00:00",
+          "status": "pending"
+        },
+        {
+          "id": "3",
+          "title": "Exactly start",
+          "startAt": "2026-03-10 12:00",
+          "endAt": "2026-03-20",
+          "status": "pending"
+        },
+        {
+          "id": "2",
+          "title": "Upcoming",
+          "startAt": "2026-03-11",
+          "endAt": "2026-03-20",
+          "status": "not started"
+        },
+        {
+          "id": "1",
+          "title": "Unknown dates",
+          "startAt": "unknown",
+          "endAt": "bad",
+          "status": "pending"
+        }
+      ],
+      "now": "2026-03-10T12:00:00+08:00",
+      "offsetSeconds": 28800
+    },
+    {
+      "name": "homework-explicit-timezone-0",
+      "kind": "homework",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"WID\":\"1\",\"ZYJZSJ\":\"2026-03-10 12:00\"}]}}}",
+      "expected": [
+        {
+          "id": "1",
+          "endAt": "2026-03-10 12:00",
+          "status": "pending"
+        }
+      ],
+      "now": "2026-03-10T08:00:00Z",
+      "offsetSeconds": 0
+    },
+    {
+      "name": "homework-explicit-timezone-28800",
+      "kind": "homework",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"WID\":\"1\",\"ZYJZSJ\":\"2026-03-10 12:00\"}]}}}",
+      "expected": [
+        {
+          "id": "1",
+          "endAt": "2026-03-10 12:00",
+          "status": "overdue"
+        }
+      ],
+      "now": "2026-03-10T08:00:00Z",
+      "offsetSeconds": 28800
+    },
+    {
+      "name": "terms-empty-envelope",
+      "kind": "terms",
+      "response": "{}",
+      "expected": null
+    },
+    {
+      "name": "terms-null-envelope",
+      "kind": "terms",
+      "response": "null",
+      "expected": null
+    },
+    {
+      "name": "terms-code-error",
+      "kind": "terms",
+      "response": "{\"code\":\"1\",\"msg\":\"denied\"}",
+      "expected": null,
+      "error": "graduate yjs1 request failed: denied"
+    },
+    {
+      "name": "terms-malformed",
+      "kind": "terms",
+      "response": "{",
+      "expected": null,
+      "error": "*"
+    },
+    {
+      "name": "terms-first-json-value",
+      "kind": "terms",
+      "response": "{} {\"ignored\":true}",
+      "expected": null
+    },
+    {
+      "name": "curriculum-empty-envelope",
+      "kind": "curriculum",
+      "response": "{}",
+      "expected": []
+    },
+    {
+      "name": "curriculum-null-envelope",
+      "kind": "curriculum",
+      "response": "null",
+      "expected": []
+    },
+    {
+      "name": "curriculum-code-error",
+      "kind": "curriculum",
+      "response": "{\"code\":\"1\",\"msg\":\"denied\"}",
+      "expected": null,
+      "error": "graduate yjs1 request failed: denied"
+    },
+    {
+      "name": "curriculum-malformed",
+      "kind": "curriculum",
+      "response": "{",
+      "expected": null,
+      "error": "*"
+    },
+    {
+      "name": "curriculum-first-json-value",
+      "kind": "curriculum",
+      "response": "{} {\"ignored\":true}",
+      "expected": []
+    },
+    {
+      "name": "scores-empty-envelope",
+      "kind": "scores",
+      "response": "{}",
+      "expected": {
+        "items": []
+      }
+    },
+    {
+      "name": "scores-null-envelope",
+      "kind": "scores",
+      "response": "null",
+      "expected": {
+        "items": []
+      }
+    },
+    {
+      "name": "scores-code-error",
+      "kind": "scores",
+      "response": "{\"code\":\"1\",\"msg\":\"denied\"}",
+      "expected": null,
+      "error": "graduate yjs1 request failed: denied"
+    },
+    {
+      "name": "scores-malformed",
+      "kind": "scores",
+      "response": "{",
+      "expected": null,
+      "error": "*"
+    },
+    {
+      "name": "scores-first-json-value",
+      "kind": "scores",
+      "response": "{} {\"ignored\":true}",
+      "expected": {
+        "items": []
+      }
+    },
+    {
+      "name": "exams-empty-envelope",
+      "kind": "exams",
+      "response": "{}",
+      "expected": []
+    },
+    {
+      "name": "exams-null-envelope",
+      "kind": "exams",
+      "response": "null",
+      "expected": []
+    },
+    {
+      "name": "exams-code-error",
+      "kind": "exams",
+      "response": "{\"code\":\"1\",\"msg\":\"denied\"}",
+      "expected": null,
+      "error": "graduate yjs1 request failed: denied"
+    },
+    {
+      "name": "exams-malformed",
+      "kind": "exams",
+      "response": "{",
+      "expected": null,
+      "error": "*"
+    },
+    {
+      "name": "exams-first-json-value",
+      "kind": "exams",
+      "response": "{} {\"ignored\":true}",
+      "expected": []
+    },
+    {
+      "name": "homework-empty-envelope",
+      "kind": "homework",
+      "response": "{}",
+      "expected": []
+    },
+    {
+      "name": "homework-null-envelope",
+      "kind": "homework",
+      "response": "null",
+      "expected": []
+    },
+    {
+      "name": "homework-code-error",
+      "kind": "homework",
+      "response": "{\"code\":\"1\",\"msg\":\"denied\"}",
+      "expected": null,
+      "error": "graduate yjs1 request failed: denied"
+    },
+    {
+      "name": "homework-malformed",
+      "kind": "homework",
+      "response": "{",
+      "expected": null,
+      "error": "*"
+    },
+    {
+      "name": "homework-first-json-value",
+      "kind": "homework",
+      "response": "{} {\"ignored\":true}",
+      "expected": []
+    },
+    {
+      "name": "terms-numeric-code-rejected",
+      "kind": "terms",
+      "response": "{\"code\":0}",
+      "expected": null,
+      "error": "*"
+    },
+    {
+      "name": "terms-numeric-field-rejected",
+      "kind": "terms",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[{\"DM\":20252}]}}}",
+      "expected": null,
+      "error": "*"
+    },
+    {
+      "name": "scores-profile-error",
+      "kind": "scores",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[]}}}",
+      "expected": null,
+      "error": "graduate score profile request failed: unavailable",
+      "profileResponse": "{\"code\":\"1\",\"msg\":\"unavailable\"}"
+    },
+    {
+      "name": "scores-info-error",
+      "kind": "scores",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[]}}}",
+      "expected": null,
+      "error": "graduate yjs1 request failed: unavailable",
+      "infoResponse": "{\"code\":\"1\",\"msg\":\"unavailable\"}"
+    },
+    {
+      "name": "scores-profile-invalid",
+      "kind": "scores",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[]}}}",
+      "expected": null,
+      "error": "*",
+      "profileResponse": "{"
+    },
+    {
+      "name": "scores-info-invalid",
+      "kind": "scores",
+      "response": "{\"code\":\"0\",\"datas\":{\"response\":{\"rows\":[]}}}",
+      "expected": null,
+      "error": "*",
+      "infoResponse": "{"
+    },
+    {
+      "name": "terms-empty-rows-remain-nonnil",
+      "kind": "terms",
+      "response": "{\"datas\":{\"response\":{\"rows\":[]}}}",
+      "expected": []
+    },
+    {
+      "name": "terms-null-rows-remain-nil",
+      "kind": "terms",
+      "response": "{\"datas\":{\"response\":{\"rows\":null}}}",
+      "expected": null
+    },
+    {
+      "name": "terms-missing-rows-remain-nil",
+      "kind": "terms",
+      "response": "{\"datas\":{\"response\":{}}}",
+      "expected": null
+    }
+  ],
+  "userIDs": [
+    {
+      "name": "embedded userid",
+      "response": "<script>var data={\"USERID\":\"SA123\",\"other\":1}</script>",
+      "expected": "SA123"
+    },
+    {
+      "name": "first match",
+      "response": "\"USERID\":\"first\" \"USERID\":\"second\"",
+      "expected": "first"
+    },
+    {
+      "name": "whitespace unchanged",
+      "response": "\"USERID\":\" SA123 \"",
+      "expected": " SA123 "
+    },
+    {
+      "name": "literal syntax required",
+      "response": "\"USERID\": \"SA123\"",
+      "error": true
+    },
+    {
+      "name": "empty is absent",
+      "response": "\"USERID\":\"\"",
+      "error": true
+    },
+    {
+      "name": "missing",
+      "response": "<html></html>",
+      "error": true
+    }
+  ]
+}

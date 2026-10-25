@@ -4,7 +4,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"regexp"
 	"strconv"
+	"strings"
+	"unicode"
 	"unicode/utf8"
 )
 
@@ -63,4 +66,62 @@ func scalarJSONText(value any) string {
 		}
 	}
 	return ""
+}
+
+func scalarJSONNumber(value any) *float64 {
+	var number float64
+	switch value := value.(type) {
+	case json.Number:
+		var err error
+		number, err = value.Float64()
+		if err != nil {
+			return nil
+		}
+	case bool:
+		if value {
+			number = 1
+		}
+	default:
+		return nil
+	}
+	return &number
+}
+
+func scalarJSONInt(value any) *int {
+	if number := scalarJSONNumber(value); number != nil {
+		integer := int(*number)
+		return &integer
+	}
+	return nil
+}
+
+func scalarJSONString(value any) *string {
+	if text, ok := value.(string); ok {
+		return &text
+	}
+	return nil
+}
+
+// SwiftyJSON's numberValue uses NSDecimalNumber for strings, unlike the
+// optional number accessor. The native scanner accepts a leading decimal
+// prefix and whitespace; invalid strings have the existing zero default.
+var scalarDecimalPrefix = regexp.MustCompile(`^[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?`)
+
+func scalarJSONNumberValue(value any) float64 {
+	if text, ok := value.(string); ok {
+		prefix := scalarDecimalPrefix.FindString(strings.TrimLeftFunc(text, unicode.IsSpace))
+		number, err := strconv.ParseFloat(prefix, 64)
+		if err != nil {
+			return 0
+		}
+		return number
+	}
+	if number := scalarJSONNumber(value); number != nil {
+		return *number
+	}
+	return 0
+}
+
+func scalarJSONIntValue(value any) int {
+	return int(scalarJSONNumberValue(value))
 }

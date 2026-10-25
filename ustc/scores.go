@@ -175,11 +175,11 @@ func ParseScalarScores(data []byte) (ScoreReport, error) {
 	}
 	root := scalarJSONObject(value)
 	overview := scalarJSONObject(root["overview"])
-	report := ScoreReport{Overview: ScoreOverview{GPA: scalarScoreNumber(overview["gpa"])}, Items: []Score{}}
+	report := ScoreReport{Overview: ScoreOverview{GPA: scalarJSONNumber(overview["gpa"])}, Items: []Score{}}
 	if rank, ok := root["stdGradeRank"].(map[string]any); ok {
 		report.Rank = &ScoreRank{
-			MajorName: scalarScoreString(rank["majorName"]),
-			MajorRank: scalarScoreInt(rank["majorRank"]), MajorStdCount: scalarScoreInt(rank["majorStdCount"]),
+			MajorName: scalarJSONString(rank["majorName"]),
+			MajorRank: scalarJSONInt(rank["majorRank"]), MajorStdCount: scalarJSONInt(rank["majorStdCount"]),
 		}
 	}
 	for _, semester := range scalarJSONChildren(root["semesters"]) {
@@ -235,38 +235,4 @@ func firstScoreText(values ...string) string {
 		}
 	}
 	return ""
-}
-
-func scalarScoreNumber(value any) *float64 {
-	var number float64
-	switch value := value.(type) {
-	case json.Number:
-		var err error
-		number, err = value.Float64()
-		if err != nil {
-			return nil
-		}
-	case bool:
-		if value {
-			number = 1
-		}
-	default:
-		return nil
-	}
-	return &number
-}
-
-func scalarScoreInt(value any) *int {
-	if number := scalarScoreNumber(value); number != nil {
-		integer := int(*number)
-		return &integer
-	}
-	return nil
-}
-
-func scalarScoreString(value any) *string {
-	if text, ok := value.(string); ok {
-		return &text
-	}
-	return nil
 }

@@ -1,0 +1,516 @@
+{
+  "graduateAppCoursesURL": "https://app.ustc.edu.cn/xkjg/wap/default/get-index",
+  "staticSemestersPath": "curriculum/semesters.json",
+  "paths": [
+    {
+      "semesterID": "2026FA",
+      "courseID": 43,
+      "courseList": "curriculum/2026FA/courses.json",
+      "course": "curriculum/2026FA/43.json"
+    },
+    {
+      "semesterID": "321",
+      "courseID": 0,
+      "courseList": "curriculum/321/courses.json",
+      "course": "curriculum/321/0.json"
+    }
+  ],
+  "semesters": [
+    {
+      "name": "raw-seconds-order-and-duplicates",
+      "response": "[{\"id\":\"2026FA\",\"name\":\" 秋季 \",\"startDate\":1788105600.25,\"endDate\":1801238399.5},{\"id\":\"2025SP\",\"name\":\"春季\",\"startDate\":0,\"endDate\":-1},{\"id\":\"2026FA\",\"name\":\"duplicate\",\"startDate\":1,\"endDate\":2}]",
+      "semesters": [
+        {
+          "id": "2026FA",
+          "name": " 秋季 ",
+          "startDate": 1788105600.25,
+          "endDate": 1801238399.5
+        },
+        {
+          "id": "2025SP",
+          "name": "春季",
+          "startDate": 0,
+          "endDate": -1
+        },
+        {
+          "id": "2026FA",
+          "name": "duplicate",
+          "startDate": 1,
+          "endDate": 2
+        }
+      ]
+    },
+    {
+      "name": "scalar-text-and-defaulting-numeric-strings",
+      "response": "[{\"id\":100,\"name\":true,\"startDate\":\" 12.75 \",\"endDate\":\"1e2\"},{\"id\":false,\"name\":1.25,\"startDate\":\"invalid\",\"endDate\":false},{\"id\":null,\"name\":{},\"startDate\":true,\"endDate\":\"-3.5\"}]",
+      "semesters": [
+        {
+          "id": "100",
+          "name": "true",
+          "startDate": 12.75,
+          "endDate": 100
+        },
+        {
+          "id": "false",
+          "name": "1.25",
+          "startDate": 0,
+          "endDate": 0
+        },
+        {
+          "id": "",
+          "name": "",
+          "startDate": 1,
+          "endDate": -3.5
+        }
+      ]
+    },
+    {
+      "name": "array-entries-retain-defaults",
+      "response": "[{},null,false,[],{\"id\":[],\"name\":null,\"startDate\":{},\"endDate\":[]}]",
+      "semesters": [
+        {
+          "id": "",
+          "name": "",
+          "startDate": 0,
+          "endDate": 0
+        },
+        {
+          "id": "",
+          "name": "",
+          "startDate": 0,
+          "endDate": 0
+        },
+        {
+          "id": "",
+          "name": "",
+          "startDate": 0,
+          "endDate": 0
+        },
+        {
+          "id": "",
+          "name": "",
+          "startDate": 0,
+          "endDate": 0
+        },
+        {
+          "id": "",
+          "name": "",
+          "startDate": 0,
+          "endDate": 0
+        }
+      ]
+    },
+    {
+      "name": "object-root-is-not-an-array",
+      "response": "{\"items\":[{\"id\":\"ignored\"}]}",
+      "semesters": []
+    },
+    {
+      "name": "empty-array",
+      "response": "[]",
+      "semesters": []
+    },
+    {
+      "name": "malformed-json",
+      "response": "[{",
+      "error": true
+    },
+    {
+      "name": "null-root-rejected",
+      "response": "null",
+      "error": true
+    },
+    {
+      "name": "trailing-json-rejected",
+      "response": "[] {}",
+      "error": true
+    }
+  ],
+  "courseLists": [
+    {
+      "name": "canonical-and-legacy-stay-distinct",
+      "response": "[{\"id\":43,\"name\":\" Algebra \",\"courseCode\":\"MATH\",\"lessonCode\":\"canonical\",\"lesson_code\":\"legacy\",\"teacherName\":\" Teacher \"},{\"id\":43,\"name\":\"duplicate\",\"lesson_code\":\"only-legacy\"}]",
+      "courses": [
+        {
+          "id": 43,
+          "name": " Algebra ",
+          "courseCode": "MATH",
+          "lessonCode": "canonical",
+          "legacyLessonCode": "legacy",
+          "teacherName": " Teacher "
+        },
+        {
+          "id": 43,
+          "name": "duplicate",
+          "courseCode": "",
+          "lessonCode": "",
+          "legacyLessonCode": "only-legacy",
+          "teacherName": ""
+        }
+      ]
+    },
+    {
+      "name": "numeric-string-id-and-scalar-text",
+      "response": "[{\"id\":\"42.9tail\",\"name\":true,\"courseCode\":100,\"lessonCode\":false,\"lesson_code\":1.25,\"teacherName\":null},{\"id\":\"invalid\"},{\"id\":true},{\"id\":-3.75}]",
+      "courses": [
+        {
+          "id": 42,
+          "name": "true",
+          "courseCode": "100",
+          "lessonCode": "false",
+          "legacyLessonCode": "1.25",
+          "teacherName": ""
+        },
+        {
+          "id": 0,
+          "name": "",
+          "courseCode": "",
+          "lessonCode": "",
+          "legacyLessonCode": "",
+          "teacherName": ""
+        },
+        {
+          "id": 1,
+          "name": "",
+          "courseCode": "",
+          "lessonCode": "",
+          "legacyLessonCode": "",
+          "teacherName": ""
+        },
+        {
+          "id": -3,
+          "name": "",
+          "courseCode": "",
+          "lessonCode": "",
+          "legacyLessonCode": "",
+          "teacherName": ""
+        }
+      ]
+    },
+    {
+      "name": "nonscalar-entries-retain-defaults",
+      "response": "[{},null,[],{\"id\":{},\"name\":[],\"courseCode\":null,\"lessonCode\":{},\"lesson_code\":[]}]",
+      "courses": [
+        {
+          "id": 0,
+          "name": "",
+          "courseCode": "",
+          "lessonCode": "",
+          "legacyLessonCode": "",
+          "teacherName": ""
+        },
+        {
+          "id": 0,
+          "name": "",
+          "courseCode": "",
+          "lessonCode": "",
+          "legacyLessonCode": "",
+          "teacherName": ""
+        },
+        {
+          "id": 0,
+          "name": "",
+          "courseCode": "",
+          "lessonCode": "",
+          "legacyLessonCode": "",
+          "teacherName": ""
+        },
+        {
+          "id": 0,
+          "name": "",
+          "courseCode": "",
+          "lessonCode": "",
+          "legacyLessonCode": "",
+          "teacherName": ""
+        }
+      ]
+    },
+    {
+      "name": "object-root-is-not-an-array",
+      "response": "{\"courses\":[{\"id\":43}]}",
+      "courses": []
+    },
+    {
+      "name": "malformed-json",
+      "response": "[{",
+      "error": true
+    },
+    {
+      "name": "null-root-rejected",
+      "response": "null",
+      "error": true
+    },
+    {
+      "name": "trailing-json-rejected",
+      "response": "[] {}",
+      "error": true
+    }
+  ],
+  "courses": [
+    {
+      "name": "dated-lectures-and-optional-zero",
+      "response": "{\"id\":43,\"name\":\" Algebra \",\"courseCode\":\"MATH\",\"lessonCode\":\"MATH.01\",\"teacherName\":\"Teacher\",\"detailText\":\"\",\"credit\":2.5,\"dateTimePlacePersonText\":\" raw schedule \",\"lectures\":[{\"startDate\":1788105600.25,\"endDate\":1788108300.5,\"name\":\"Lecture\",\"location\":\"Room\",\"teacherName\":\"Teacher\",\"periods\":1.5,\"startIndex\":0,\"endIndex\":null},{\"startDate\":-1,\"endDate\":0,\"name\":\"Second\",\"periods\":0,\"endIndex\":3}]}",
+      "course": {
+        "id": 43,
+        "name": " Algebra ",
+        "courseCode": "MATH",
+        "lessonCode": "MATH.01",
+        "teacherName": "Teacher",
+        "detailText": "",
+        "credit": 2.5,
+        "dateTimePlacePersonText": " raw schedule ",
+        "lectures": [
+          {
+            "startDate": 1788105600.25,
+            "endDate": 1788108300.5,
+            "name": "Lecture",
+            "location": "Room",
+            "teacherName": "Teacher",
+            "periods": 1.5,
+            "startIndex": 0,
+            "endIndex": null
+          },
+          {
+            "startDate": -1,
+            "endDate": 0,
+            "name": "Second",
+            "location": "",
+            "teacherName": "",
+            "periods": 0,
+            "startIndex": null,
+            "endIndex": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "producer-description-is-not-detail-text",
+      "response": "{\"id\":44,\"description\":\"not imported\",\"detailText\":null,\"dateTimePlacePersonText\":100,\"lectures\":{\"first\":{\"startDate\":1}}}",
+      "course": {
+        "id": 44,
+        "name": "",
+        "courseCode": "",
+        "lessonCode": "",
+        "teacherName": "",
+        "detailText": null,
+        "credit": 0,
+        "dateTimePlacePersonText": null,
+        "lectures": []
+      }
+    },
+    {
+      "name": "number-value-and-optional-int-differ",
+      "response": "{\"id\":\"42.9\",\"name\":true,\"courseCode\":12,\"lessonCode\":false,\"teacherName\":1.25,\"credit\":\" 2.5 credits\",\"detailText\":false,\"dateTimePlacePersonText\":\"\",\"lectures\":[{\"startDate\":\"1e2\",\"endDate\":\"invalid\",\"periods\":true,\"name\":12,\"location\":false,\"teacherName\":null,\"startIndex\":\"0\",\"endIndex\":0},{\"startDate\":false,\"endDate\":true,\"periods\":\"1.25\",\"startIndex\":2.9,\"endIndex\":false},{\"startDate\":[],\"endDate\":{},\"periods\":\"invalid\",\"startIndex\":null,\"endIndex\":{}},null]}",
+      "course": {
+        "id": 42,
+        "name": "true",
+        "courseCode": "12",
+        "lessonCode": "false",
+        "teacherName": "1.25",
+        "detailText": null,
+        "credit": 2.5,
+        "dateTimePlacePersonText": "",
+        "lectures": [
+          {
+            "startDate": 100,
+            "endDate": 0,
+            "name": "12",
+            "location": "false",
+            "teacherName": "",
+            "periods": 1,
+            "startIndex": null,
+            "endIndex": 0
+          },
+          {
+            "startDate": 0,
+            "endDate": 1,
+            "name": "",
+            "location": "",
+            "teacherName": "",
+            "periods": 1.25,
+            "startIndex": 2,
+            "endIndex": 0
+          },
+          {
+            "startDate": 0,
+            "endDate": 0,
+            "name": "",
+            "location": "",
+            "teacherName": "",
+            "periods": 0,
+            "startIndex": null,
+            "endIndex": null
+          },
+          {
+            "startDate": 0,
+            "endDate": 0,
+            "name": "",
+            "location": "",
+            "teacherName": "",
+            "periods": 0,
+            "startIndex": null,
+            "endIndex": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "array-root-retains-default-course",
+      "response": "[]",
+      "course": {
+        "id": 0,
+        "name": "",
+        "courseCode": "",
+        "lessonCode": "",
+        "teacherName": "",
+        "detailText": null,
+        "credit": 0,
+        "dateTimePlacePersonText": null,
+        "lectures": []
+      }
+    },
+    {
+      "name": "missing-fields",
+      "response": "{}",
+      "course": {
+        "id": 0,
+        "name": "",
+        "courseCode": "",
+        "lessonCode": "",
+        "teacherName": "",
+        "detailText": null,
+        "credit": 0,
+        "dateTimePlacePersonText": null,
+        "lectures": []
+      }
+    },
+    {
+      "name": "malformed-json",
+      "response": "[{",
+      "error": true
+    },
+    {
+      "name": "null-root-rejected",
+      "response": "null",
+      "error": true
+    },
+    {
+      "name": "trailing-json-rejected",
+      "response": "[] {}",
+      "error": true
+    }
+  ],
+  "appCodes": [
+    {
+      "name": "first-empty-raw-and-duplicate-captures",
+      "response": "{\"d\":{\"lists\":[{\"course_name\":\"One(A)(B)\"},{\"course_name\":\"Empty()\"},{\"course_name\":\"Whitespace( A )\"},{\"course_name\":\"Repeat(A)\"},{\"course_name\":\"全角（C）\"},{\"course_name\":\"no code\"},{\"course_name\":\"Nested(unclosed (Z)\"}]}}",
+      "codes": [
+        "A",
+        "",
+        " A ",
+        "A",
+        "unclosed (Z"
+      ]
+    },
+    {
+      "name": "newline-pairs-are-skipped",
+      "response": "{\"d\":{\"lists\":[{\"course_name\":\"LF(x\\ny)(LF)\"},{\"course_name\":\"CR(x\\ry)(CR)\"},{\"course_name\":\"NEL(xy)(NEL)\"},{\"course_name\":\"LS(x y)(LS)\"}]}}",
+      "codes": [
+        "LF",
+        "CR",
+        "NEL",
+        "LS"
+      ]
+    },
+    {
+      "name": "array-fields-and-nonscalars",
+      "response": "{\"d\":{\"lists\":[{},null,false,{\"course_name\":123},{\"course_name\":[]},{\"course_name\":\"Matched(M)\"}]}}",
+      "codes": [
+        "M"
+      ]
+    },
+    {
+      "name": "object-lists-are-not-iterated",
+      "response": "{\"d\":{\"lists\":{\"x\":{\"course_name\":\"Ignored(I)\"}}}}",
+      "codes": []
+    },
+    {
+      "name": "array-root-has-no-d-lists",
+      "response": "[]",
+      "codes": []
+    },
+    {
+      "name": "missing-lists",
+      "response": "{}",
+      "codes": []
+    },
+    {
+      "name": "malformed-json",
+      "response": "[{",
+      "error": true
+    },
+    {
+      "name": "null-root-rejected",
+      "response": "null",
+      "error": true
+    },
+    {
+      "name": "trailing-json-rejected",
+      "response": "[] {}",
+      "error": true
+    }
+  ],
+  "matches": [
+    {
+      "name": "canonical-or-legacy-and-repeated-ids",
+      "appResponse": "{\"d\":{\"lists\":[{\"course_name\":\"A(canon)\"},{\"course_name\":\"B(legacy)\"},{\"course_name\":\"C(both)\"}]}}",
+      "courseListResponse": "[{\"id\":101,\"lessonCode\":\"canon\",\"lesson_code\":\"old\"},{\"id\":102,\"lessonCode\":\"other\",\"lesson_code\":\"legacy\"},{\"id\":103,\"lessonCode\":\"both\",\"lesson_code\":\"both\"},{\"id\":101,\"lessonCode\":\"canon\"},{\"id\":104,\"lessonCode\":\"neither\",\"lesson_code\":\"no\"}]",
+      "ids": [
+        101,
+        102,
+        103,
+        101
+      ]
+    },
+    {
+      "name": "empty-capture-matches-either-default-field",
+      "appResponse": "{\"d\":{\"lists\":[{\"course_name\":\"Empty()\"}]}}",
+      "courseListResponse": "[{\"id\":1,\"lessonCode\":\"nonempty\"},{\"id\":2,\"lesson_code\":\"nonempty\"},{\"id\":3,\"lessonCode\":\"x\",\"lesson_code\":\"y\"},{},null]",
+      "ids": [
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "no-capture-is-not-empty-capture",
+      "appResponse": "{\"d\":{\"lists\":[{\"course_name\":\"No code\"},{\"course_name\":\"全角（X）\"}]}}",
+      "courseListResponse": "[{},null,{\"id\":1}]",
+      "ids": []
+    },
+    {
+      "name": "raw-whitespace-retained",
+      "appResponse": "{\"d\":{\"lists\":[{\"course_name\":\"Raw( X )\"}]}}",
+      "courseListResponse": "[{\"id\":1,\"lessonCode\":\"X\"},{\"id\":2,\"lessonCode\":\" X \"},{\"id\":3,\"lesson_code\":\" X \"}]",
+      "ids": [
+        2,
+        3
+      ]
+    },
+    {
+      "name": "invalid-app-response",
+      "appResponse": "{",
+      "courseListResponse": "[]",
+      "error": true,
+      "errorStage": "app"
+    },
+    {
+      "name": "invalid-list-response",
+      "appResponse": "{\"d\":{\"lists\":[{\"course_name\":\"X(X)\"}]}}",
+      "courseListResponse": "[",
+      "error": true,
+      "errorStage": "courseList"
+    }
+  ]
+}
