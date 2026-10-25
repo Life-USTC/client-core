@@ -24,3 +24,4 @@ cp ustc/testdata/course_table_cases.json apple/Tests/LifeClientCoreTests/Fixture
 cp ustc/testdata/academic_cases.json apple/Tests/LifeClientCoreTests/Fixtures/ustc_academic_cases.json
 cp ustc/testdata/blackboard_cases.json apple/Tests/LifeClientCoreTests/Fixtures/ustc_blackboard_cases.json
 cp ustc/testdata/static_cases.json apple/Tests/LifeClientCoreTests/Fixtures/ustc_static_cases.json
+cp ustc/testdata/cas_native_cases.json apple/Tests/LifeClientCoreTests/Fixtures/ustc_cas_native_cases.json
