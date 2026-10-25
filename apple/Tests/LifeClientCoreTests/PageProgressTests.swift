@@ -1,8 +1,31 @@
 import Foundation
+import LifeClientCore
 import LifeCore
 import XCTest
 
 final class PageProgressTests: XCTestCase {
+    func testSwiftWrapperKeepsPreviousProgressAndCallerContinuationDecision() {
+        let original = PageProgress(firstPage: 7)
+        let snapshot = original
+        let accepted = original.afterPage(itemCount: 100, hasMore: true)
+        XCTAssertEqual(accepted.nextPage, 8)
+        XCTAssertEqual(accepted.receivedCount, 100)
+        XCTAssertEqual(original.nextPage, 7)
+        XCTAssertEqual(original.receivedCount, 0)
+        XCTAssertEqual(snapshot.nextPage, 7)
+        XCTAssertEqual(snapshot.receivedCount, 0)
+
+        let complete = accepted.afterPage(itemCount: 0, hasMore: false)
+        XCTAssertEqual(complete.nextPage, 0)
+        XCTAssertEqual(complete.receivedCount, 100)
+        XCTAssertEqual(accepted.nextPage, 8)
+        XCTAssertEqual(accepted.receivedCount, 100)
+
+        let emptyIntermediate = original.afterPage(itemCount: 0, hasMore: true)
+        XCTAssertEqual(emptyIntermediate.nextPage, 8)
+        XCTAssertEqual(emptyIntermediate.receivedCount, 0)
+    }
+
     private struct Fixture: Decodable {
         struct Page: Decodable {
             let itemCount: Int64
