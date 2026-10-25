@@ -80,6 +80,8 @@ unused parallel Swift model for the embedded CLI lesson details.
 2. **Undergraduate catalog, scores and exams.** Establish representative,
    redacted response fixtures before unifying differing schemas. Extract their
    request and decoding rules, then replace each actual consumer.
+   The [catalog extraction](ustc-catalog.md) preserves CLI metadata decoding
+   and direct-array versus paginated lesson responses.
 3. **Blackboard homework.** Reconcile the CLI calendars/events and course/grade
    association path with the iOS selected-calendar-events path. Adding statuses
    or new course associations to iOS requires observable acceptance alongside
@@ -90,6 +92,8 @@ unused parallel Swift model for the embedded CLI lesson details.
    the agreed iOS graduate capabilities. Its current `app.ustc.edu.cn` course
    lookup differs from CLI `yjs1.ustc.edu.cn`; this is not a mechanical endpoint
    replacement. Retain lecture detail and semester identity requirements.
+   The [YJS1 extraction](ustc-yjs1.md) preserves CLI request stages, term
+   cache semantics and graduate projections.
    The [static/app extraction](ustc-static.md) retains the existing iOS scalar
    projection, dated lectures and canonical-or-legacy course matching.
 5. **Remaining university protocol rules.** Share portable CAS/service request
