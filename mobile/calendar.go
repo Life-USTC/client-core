@@ -1,4 +1,4 @@
-// Package mobile exposes the calendar core through gomobile-supported types.
+// Package mobile exposes the client core through gomobile-supported types.
 package mobile
 
 import (

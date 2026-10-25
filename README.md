@@ -13,10 +13,16 @@ Week one contains the semester's first day; week bounds remain complete even
 when part of the week falls outside the semester. Adapters retain explicit
 meeting-date priority and semester inclusion rules.
 
+The `young` package projects public event filters into request parameters and
+switches a query to unknown dates while retaining its filter context. Optional
+booleans preserve false versus absence. Callers choose pagination, validate user
+input and aggregate responses; the core does not fetch or advance pages.
+
 See [the PRD and roadmap](docs/architecture.md). Cross-client delivery is tracked
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).
 
-Go clients use `github.com/Life-USTC/client-core/calendar` at `v0.2.0`.
+Go clients use `github.com/Life-USTC/client-core/calendar` and
+`github.com/Life-USTC/client-core/young` at `v0.3.0`.
 Apple clients add this repository as a Swift package and use the `LifeClientCore`
 product. Pin the full distribution commit revision containing the updated root
 `Package.swift`; release tags identify the Go and framework source, while the

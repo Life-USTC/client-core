@@ -24,7 +24,7 @@ jobs:
         working-directory: mobile
       - run: go vet ./...
         working-directory: mobile
-      - run: test -z "$(gofmt -l calendar mobile)"
+      - run: test -z "$(gofmt -l calendar mobile young)"
 
   apple:
     name: Apple binding
