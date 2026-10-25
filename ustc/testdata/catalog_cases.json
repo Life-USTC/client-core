@@ -1,0 +1,452 @@
+{
+  "semesters": [
+    {
+      "name": "fields-order-duplicates",
+      "input": "[{\"id\": 301, \"code\": \" raw-code \", \"semesterCn\": \" 中文 \", \"semesterEn\": \" English \", \"startDate\": \"start\", \"endDate\": \"end\", \"isLast\": true}, {\"id\": 101}, {\"id\": 301}]",
+      "want": [
+        {
+          "id": 301,
+          "code": " raw-code ",
+          "semesterCn": " 中文 ",
+          "semesterEn": " English ",
+          "startDate": "start",
+          "endDate": "end",
+          "isLast": true
+        },
+        {
+          "id": 101
+        },
+        {
+          "id": 301
+        }
+      ]
+    },
+    {
+      "name": "null",
+      "input": "null",
+      "want": null
+    },
+    {
+      "name": "empty",
+      "input": "[]",
+      "want": []
+    },
+    {
+      "name": "first-value",
+      "input": "[{\"id\":7}] trailing",
+      "want": [
+        {
+          "id": 7
+        }
+      ]
+    },
+    {
+      "name": "missing-fields",
+      "input": "[{},null]",
+      "want": [
+        {
+          "id": 0
+        },
+        {
+          "id": 0
+        }
+      ]
+    },
+    {
+      "name": "empty-input",
+      "input": "",
+      "error": "eof"
+    },
+    {
+      "name": "wrong-envelope",
+      "input": "{}",
+      "error": "type"
+    },
+    {
+      "name": "string-id",
+      "input": "[{\"id\":\"7\"}]",
+      "error": "type"
+    },
+    {
+      "name": "fractional-id",
+      "input": "[{\"id\":1.5}]",
+      "error": "type"
+    },
+    {
+      "name": "wrong-name",
+      "input": "[{\"semesterCn\":3}]",
+      "error": "type"
+    },
+    {
+      "name": "wrong-current",
+      "input": "[{\"isLast\":\"true\"}]",
+      "error": "type"
+    },
+    {
+      "name": "invalid",
+      "input": "!",
+      "error": "syntax"
+    }
+  ],
+  "types": [
+    {
+      "name": "order-duplicates",
+      "input": "[{\"id\": 7}, {\"id\": 3}, {\"id\": 7}]",
+      "want": [
+        {
+          "id": 7
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 7
+        }
+      ]
+    },
+    {
+      "name": "null",
+      "input": "null",
+      "want": null
+    },
+    {
+      "name": "empty",
+      "input": "[]",
+      "want": []
+    },
+    {
+      "name": "first-value",
+      "input": "[{\"id\":7}] []",
+      "want": [
+        {
+          "id": 7
+        }
+      ]
+    },
+    {
+      "name": "missing-fields",
+      "input": "[{},null]",
+      "want": [
+        {
+          "id": 0
+        },
+        {
+          "id": 0
+        }
+      ]
+    },
+    {
+      "name": "empty-input",
+      "input": "",
+      "error": "eof"
+    },
+    {
+      "name": "wrong-envelope",
+      "input": "{}",
+      "error": "type"
+    },
+    {
+      "name": "string-id",
+      "input": "[{\"id\":\"7\"}]",
+      "error": "type"
+    },
+    {
+      "name": "fractional-id",
+      "input": "[{\"id\":1.5}]",
+      "error": "type"
+    },
+    {
+      "name": "invalid",
+      "input": "!",
+      "error": "syntax"
+    }
+  ],
+  "lessons": [
+    {
+      "name": "direct-fields",
+      "input": "[{\"id\": 42, \"code\": \" A.01 \", \"courseCode\": \"OUT\", \"courseName\": \"Outer\", \"credits\": 4, \"dateTimePlacePersonText\": {\"cn\": \" 中文安排 \", \"en\": \"English\"}, \"course\": {\"code\": \"INNER\", \"nameZh\": \"中文\", \"nameEn\": \"English\", \"cn\": \"CN\", \"en\": \"EN\", \"credits\": 2}, \"teacherAssignmentList\": [{\"cn\": \" C \", \"en\": \" E \", \"teacher\": {\"nameZh\": \" 中 \", \"nameEn\": \" English \"}}, {\"cn\": \"C\"}]}, {\"id\": 3}, {\"id\": 42, \"code\": \" A.01 \", \"courseCode\": \"OUT\", \"courseName\": \"Outer\", \"credits\": 4, \"dateTimePlacePersonText\": {\"cn\": \" 中文安排 \", \"en\": \"English\"}, \"course\": {\"code\": \"INNER\", \"nameZh\": \"中文\", \"nameEn\": \"English\", \"cn\": \"CN\", \"en\": \"EN\", \"credits\": 2}, \"teacherAssignmentList\": [{\"cn\": \" C \", \"en\": \" E \", \"teacher\": {\"nameZh\": \" 中 \", \"nameEn\": \" English \"}}, {\"cn\": \"C\"}]}]",
+      "want": {
+        "rows": [
+          {
+            "id": 42,
+            "code": " A.01 ",
+            "courseCode": "OUT",
+            "courseName": "Outer",
+            "credits": 4,
+            "dateTimePlacePersonText": {
+              "cn": " 中文安排 ",
+              "en": "English"
+            },
+            "course": {
+              "code": "INNER",
+              "nameZh": "中文",
+              "nameEn": "English",
+              "cn": "CN",
+              "en": "EN",
+              "credits": 2
+            },
+            "teacherAssignmentList": [
+              {
+                "cn": " C ",
+                "en": " E ",
+                "teacher": {
+                  "nameZh": " 中 ",
+                  "nameEn": " English "
+                }
+              },
+              {
+                "cn": "C"
+              }
+            ]
+          },
+          {
+            "id": 3
+          },
+          {
+            "id": 42,
+            "code": " A.01 ",
+            "courseCode": "OUT",
+            "courseName": "Outer",
+            "credits": 4,
+            "dateTimePlacePersonText": {
+              "cn": " 中文安排 ",
+              "en": "English"
+            },
+            "course": {
+              "code": "INNER",
+              "nameZh": "中文",
+              "nameEn": "English",
+              "cn": "CN",
+              "en": "EN",
+              "credits": 2
+            },
+            "teacherAssignmentList": [
+              {
+                "cn": " C ",
+                "en": " E ",
+                "teacher": {
+                  "nameZh": " 中 ",
+                  "nameEn": " English "
+                }
+              },
+              {
+                "cn": "C"
+              }
+            ]
+          }
+        ],
+        "direct": true
+      }
+    },
+    {
+      "name": "page-fields",
+      "input": "{\"rows\": [{\"id\": 42, \"code\": \" A.01 \", \"courseCode\": \"OUT\", \"courseName\": \"Outer\", \"credits\": 4, \"dateTimePlacePersonText\": {\"cn\": \" 中文安排 \", \"en\": \"English\"}, \"course\": {\"code\": \"INNER\", \"nameZh\": \"中文\", \"nameEn\": \"English\", \"cn\": \"CN\", \"en\": \"EN\", \"credits\": 2}, \"teacherAssignmentList\": [{\"cn\": \" C \", \"en\": \" E \", \"teacher\": {\"nameZh\": \" 中 \", \"nameEn\": \" English \"}}, {\"cn\": \"C\"}]}], \"totalPage\": 3}",
+      "want": {
+        "rows": [
+          {
+            "id": 42,
+            "code": " A.01 ",
+            "courseCode": "OUT",
+            "courseName": "Outer",
+            "credits": 4,
+            "dateTimePlacePersonText": {
+              "cn": " 中文安排 ",
+              "en": "English"
+            },
+            "course": {
+              "code": "INNER",
+              "nameZh": "中文",
+              "nameEn": "English",
+              "cn": "CN",
+              "en": "EN",
+              "credits": 2
+            },
+            "teacherAssignmentList": [
+              {
+                "cn": " C ",
+                "en": " E ",
+                "teacher": {
+                  "nameZh": " 中 ",
+                  "nameEn": " English "
+                }
+              },
+              {
+                "cn": "C"
+              }
+            ]
+          }
+        ],
+        "totalPage": 3
+      }
+    },
+    {
+      "name": "direct-null",
+      "input": "null",
+      "want": {
+        "rows": null,
+        "direct": true
+      }
+    },
+    {
+      "name": "direct-empty",
+      "input": "[]",
+      "want": {
+        "rows": [],
+        "direct": true
+      }
+    },
+    {
+      "name": "empty-object",
+      "input": "{}",
+      "want": {
+        "rows": null
+      }
+    },
+    {
+      "name": "page-null",
+      "input": "{\"rows\":null,\"totalPage\":0}",
+      "want": {
+        "rows": null
+      }
+    },
+    {
+      "name": "page-empty",
+      "input": "{\"rows\":[],\"totalPage\":2}",
+      "want": {
+        "rows": [],
+        "totalPage": 2
+      }
+    },
+    {
+      "name": "negative-total",
+      "input": "{\"totalPage\":-1}",
+      "want": {
+        "rows": null,
+        "totalPage": -1
+      }
+    },
+    {
+      "name": "string-localized",
+      "input": "[{\"dateTimePlacePersonText\":\" raw \"}]",
+      "want": {
+        "rows": [
+          {
+            "dateTimePlacePersonText": " raw "
+          }
+        ],
+        "direct": true
+      }
+    },
+    {
+      "name": "english-localized",
+      "input": "[{\"dateTimePlacePersonText\":{\"cn\":\" \",\"en\":\" E \"}}]",
+      "want": {
+        "rows": [
+          {
+            "dateTimePlacePersonText": {
+              "cn": " ",
+              "en": " E "
+            }
+          }
+        ],
+        "direct": true
+      }
+    },
+    {
+      "name": "null-element",
+      "input": "[null]",
+      "want": {
+        "rows": [
+          {}
+        ],
+        "direct": true
+      }
+    },
+    {
+      "name": "empty-input",
+      "input": "",
+      "error": "syntax"
+    },
+    {
+      "name": "invalid",
+      "input": "!",
+      "error": "syntax"
+    },
+    {
+      "name": "trailing-array",
+      "input": "[] []",
+      "error": "syntax"
+    },
+    {
+      "name": "trailing-object",
+      "input": "{} {}",
+      "error": "syntax"
+    },
+    {
+      "name": "string-id",
+      "input": "[{\"id\":\"7\"}]",
+      "error": "type"
+    },
+    {
+      "name": "wrong-rows",
+      "input": "{\"rows\":{}}",
+      "error": "type"
+    },
+    {
+      "name": "string-total",
+      "input": "{\"rows\":[],\"totalPage\":\"2\"}",
+      "error": "type"
+    },
+    {
+      "name": "fractional-total",
+      "input": "{\"totalPage\":1.5}",
+      "error": "type"
+    },
+    {
+      "name": "wrong-localized",
+      "input": "{\"rows\":[{\"dateTimePlacePersonText\":7}]}",
+      "error": "type"
+    },
+    {
+      "name": "wrong-credit",
+      "input": "{\"rows\":[{\"credits\":\"3\"}]}",
+      "error": "type"
+    },
+    {
+      "name": "upstream-direct-field-ignored",
+      "input": "{\"rows\":[],\"totalPage\":2,\"direct\":true}",
+      "want": {
+        "rows": [],
+        "totalPage": 2
+      }
+    }
+  ],
+  "urls": [
+    {
+      "name": "first",
+      "semesterId": 301,
+      "page": 1,
+      "pageSize": 500,
+      "want": "https://catalog.ustc.edu.cn/api/teach/lesson/list-for-teach/301?page=1&pageSize=500"
+    },
+    {
+      "name": "later",
+      "semesterId": 301,
+      "page": 2,
+      "pageSize": 500,
+      "want": "https://catalog.ustc.edu.cn/api/teach/lesson/list-for-teach/301?page=2&pageSize=500"
+    },
+    {
+      "name": "caller-values",
+      "semesterId": -1,
+      "page": 0,
+      "pageSize": 0,
+      "want": "https://catalog.ustc.edu.cn/api/teach/lesson/list-for-teach/-1?page=0&pageSize=0"
+    }
+  ],
+  "endpoints": {
+    "semesters": "https://catalog.ustc.edu.cn/api/teach/semester/list",
+    "scoreSemesters": "https://jw.ustc.edu.cn/for-std/grade/sheet/getSemesters",
+    "scoreTypes": "https://jw.ustc.edu.cn/for-std/grade/sheet/getGradeSheetTypes"
+  }
+}
