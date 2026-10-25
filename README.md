@@ -25,7 +25,7 @@ include the CLI's shared reader across catalog, workspace and school endpoints
 and the Bot's Young activity reader.
 
 The `ustc` package shares undergraduate course-table, catalog, score, exam,
-Blackboard, graduate YJS1 and static/app curriculum request and response rules. Explicit parser profiles preserve each client’s
+Blackboard, graduate YJS1, static/app curriculum and CAS/service protocol rules. Explicit parser profiles preserve each client’s
 existing formats. Clients retain authentication, transport, persistence, native
 date conversion and empty-table policy. See the
 [USTC extraction PRD and roadmap](docs/ustc.md) for its two-client acceptance
@@ -35,7 +35,7 @@ See [the PRD and roadmap](docs/architecture.md). Initial shared-core delivery is
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).
 
 Go clients import the `calendar`, `young`, `pagination` and `ustc` packages from
-`github.com/Life-USTC/client-core` at `v0.7.0`.
+`github.com/Life-USTC/client-core` at `v0.8.0`.
 Apple clients add this repository as a Swift package and use the `LifeClientCore`
 product. Pin the full distribution commit revision containing the updated root
 `Package.swift`; release tags identify the Go and framework source, while the
@@ -43,8 +43,7 @@ following distribution commit selects that archive and checksum. Swift
 applications do not run the Go build tools.
 
 The release includes `source-commit.txt` and `LifeCore.xcframework.sha256` with
-the verified build archive. The Swift adapter source matches the release source;
-the later package manifest supplies distribution metadata.
+the verified build archive. The distribution commit pairs the Swift adapters with that archive and checksum.
 
 ```sh
 go test -race -count=1 ./...
