@@ -24,7 +24,7 @@ following distribution commit selects that archive and checksum. Swift
 applications do not run the Go build tools.
 
 The release includes `source-commit.txt` and `LifeCore.xcframework.sha256` with
-the original CI archive. The Swift adapter source matches the release source;
+the verified build archive. The Swift adapter source matches the release source;
 the later package manifest supplies distribution metadata.
 
 ```sh
