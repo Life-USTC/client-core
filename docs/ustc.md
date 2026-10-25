@@ -90,6 +90,8 @@ unused parallel Swift model for the embedded CLI lesson details.
    the agreed iOS graduate capabilities. Its current `app.ustc.edu.cn` course
    lookup differs from CLI `yjs1.ustc.edu.cn`; this is not a mechanical endpoint
    replacement. Retain lecture detail and semester identity requirements.
+   The [static/app extraction](ustc-static.md) retains the existing iOS scalar
+   projection, dated lectures and canonical-or-legacy course matching.
 5. **Remaining university protocol rules.** Share portable CAS/service request
    and response rules where both clients need them, with representative login
    responses and native integration evidence. Keep platform interaction,
