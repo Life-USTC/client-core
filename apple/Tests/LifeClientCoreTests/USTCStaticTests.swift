@@ -201,15 +201,16 @@ final class USTCStaticTests: XCTestCase {
             }
             XCTAssertNil(error, fixture.name)
             let parsed = try XCTUnwrap(selection)
-            do {
-                let actual = try XCTUnwrap(parsed.matchCourseIDs(Data(fixture.courseListResponse.utf8)))
-                XCTAssertNotEqual(fixture.error, true, fixture.name)
-                let expected = try XCTUnwrap(fixture.ids)
-                XCTAssertEqual((0..<actual.count()).map { actual.at($0) }, expected, fixture.name)
-            } catch {
+            if fixture.errorStage == "courseList" {
                 XCTAssertEqual(fixture.error, true, fixture.name)
-                XCTAssertEqual(fixture.errorStage, "courseList", fixture.name)
+                XCTAssertThrowsError(try parsed.matchCourseIDs(Data(fixture.courseListResponse.utf8)), fixture.name)
+                continue
             }
+            let result = try parsed.matchCourseIDs(Data(fixture.courseListResponse.utf8))
+            let actual = try XCTUnwrap(result)
+            XCTAssertNotEqual(fixture.error, true, fixture.name)
+            let expected = try XCTUnwrap(fixture.ids)
+            XCTAssertEqual((0..<actual.count()).map { actual.at($0) }, expected, fixture.name)
         }
     }
 }
