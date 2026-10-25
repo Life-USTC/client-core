@@ -16,7 +16,13 @@ meeting-date priority and semester inclusion rules.
 The `young` package projects public event filters into request parameters and
 switches a query to unknown dates while retaining its filter context. Optional
 booleans preserve false versus absence. Callers choose pagination, validate user
-input and aggregate responses; the core does not fetch or advance pages.
+input and aggregate responses.
+
+The `pagination` package records accepted row counts and the next request page.
+`Progress` advances using the caller's has-more decision; validation, fetching
+and collection completeness remain in each client. Its existing consumers
+include the CLI's shared reader across catalog, workspace and school endpoints
+and the Bot's Young activity reader.
 
 See [the PRD and roadmap](docs/architecture.md). Cross-client delivery is tracked
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).

@@ -89,6 +89,9 @@ Each phase lands as a working product. A later phase starts from measured
 results and concrete duplicated behavior; this roadmap does not authorize
 unrelated features or additional robustness machinery.
 
+The next proposed client-use-case slice is specified in the
+[incremental pagination PRD](incremental-pagination.md).
+
 ## Acceptance
 
 - Shared fixtures independently specify Shanghai day rollover, Sunday/Monday

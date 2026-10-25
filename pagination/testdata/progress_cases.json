@@ -1,0 +1,41 @@
+[
+  {
+    "name": "three_batches",
+    "firstPage": 1,
+    "pages": [
+      {"itemCount": 100, "hasMore": true, "nextPage": 2, "receivedCount": 100},
+      {"itemCount": 100, "hasMore": true, "nextPage": 3, "receivedCount": 200},
+      {"itemCount": 100, "hasMore": false, "nextPage": 0, "receivedCount": 300}
+    ]
+  },
+  {
+    "name": "explicit_page_with_continuation",
+    "firstPage": 7,
+    "pages": [
+      {"itemCount": 10, "hasMore": true, "nextPage": 8, "receivedCount": 10}
+    ]
+  },
+  {
+    "name": "adapter_ends_on_empty_page",
+    "firstPage": 1,
+    "pages": [
+      {"itemCount": 0, "hasMore": false, "nextPage": 0, "receivedCount": 0}
+    ]
+  },
+  {
+    "name": "adapter_continues_after_empty_page",
+    "firstPage": 1,
+    "pages": [
+      {"itemCount": 0, "hasMore": true, "nextPage": 2, "receivedCount": 0},
+      {"itemCount": 1, "hasMore": false, "nextPage": 0, "receivedCount": 1}
+    ]
+  },
+  {
+    "name": "adapter_continues_after_short_page",
+    "firstPage": 1,
+    "pages": [
+      {"itemCount": 3, "hasMore": true, "nextPage": 2, "receivedCount": 3},
+      {"itemCount": 1, "hasMore": false, "nextPage": 0, "receivedCount": 4}
+    ]
+  }
+]

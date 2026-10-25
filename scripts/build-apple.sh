@@ -19,3 +19,4 @@ mkdir -p apple/Tests/LifeClientCoreTests/Fixtures
 cp calendar/testdata/calendar_cases.json apple/Tests/LifeClientCoreTests/Fixtures/calendar_cases.json
 cp calendar/testdata/teaching_week_cases.json apple/Tests/LifeClientCoreTests/Fixtures/teaching_week_cases.json
 cp young/testdata/query_cases.json apple/Tests/LifeClientCoreTests/Fixtures/young_query_cases.json
+cp pagination/testdata/progress_cases.json apple/Tests/LifeClientCoreTests/Fixtures/page_progress_cases.json
