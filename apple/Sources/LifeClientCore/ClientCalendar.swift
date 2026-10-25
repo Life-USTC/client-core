@@ -39,6 +39,29 @@ public enum ClientCalendar {
         return try JSONDecoder().decode([CivilDateRange].self, from: Data(json.utf8))
     }
 
+    public static func teachingWeekBounds(
+        semesterStart: String, weekIndex: Int, firstWeekday: CalendarWeekday
+    ) throws -> CivilDateRange {
+        var error: NSError?
+        let result = LifeCoreMobileTeachingWeekBounds(
+            semesterStart, Int64(weekIndex), firstWeekday.rawValue, &error
+        )
+        if let error { throw error }
+        return CivilDateRange(from: result!.from, to: result!.to)
+    }
+
+    public static func teachingWeekNumber(
+        semesterStart: String, selectedDate: String, firstWeekday: CalendarWeekday
+    ) throws -> Int {
+        var error: NSError?
+        var result: Int64 = 0
+        LifeCoreMobileTeachingWeekNumber(
+            semesterStart, selectedDate, firstWeekday.rawValue, &result, &error
+        )
+        if let error { throw error }
+        return Int(result)
+    }
+
     private static func milliseconds(_ date: Date) -> Int64 {
         Int64((date.timeIntervalSince1970 * 1_000).rounded(.down))
     }

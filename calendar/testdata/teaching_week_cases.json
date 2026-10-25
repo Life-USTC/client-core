@@ -1,0 +1,25 @@
+{
+  "bounds": [
+    {"name":"midweek-monday","semesterStart":"2026-09-01","weekIndex":1,"firstWeekday":1,"from":"2026-08-31","to":"2026-09-06"},
+    {"name":"midweek-sunday","semesterStart":"2026-09-01","weekIndex":1,"firstWeekday":0,"from":"2026-08-30","to":"2026-09-05"},
+    {"name":"second-monday-week","semesterStart":"2026-09-01","weekIndex":2,"firstWeekday":1,"from":"2026-09-07","to":"2026-09-13"},
+    {"name":"second-sunday-week","semesterStart":"2026-09-01","weekIndex":2,"firstWeekday":0,"from":"2026-09-06","to":"2026-09-12"},
+    {"name":"sunday-start-monday-policy","semesterStart":"2026-09-06","weekIndex":1,"firstWeekday":1,"from":"2026-08-31","to":"2026-09-06"},
+    {"name":"sunday-start-sunday-policy","semesterStart":"2026-09-06","weekIndex":1,"firstWeekday":0,"from":"2026-09-06","to":"2026-09-12"},
+    {"name":"year-rollover","semesterStart":"2025-12-31","weekIndex":2,"firstWeekday":1,"from":"2026-01-05","to":"2026-01-11"},
+    {"name":"leap-week","semesterStart":"2024-02-26","weekIndex":1,"firstWeekday":1,"from":"2024-02-26","to":"2024-03-03"},
+    {"name":"leap-next-week","semesterStart":"2024-02-29","weekIndex":2,"firstWeekday":0,"from":"2024-03-03","to":"2024-03-09"}
+  ],
+  "numbers": [
+    {"name":"semester-first-day","semesterStart":"2026-09-01","selectedDate":"2026-09-01","firstWeekday":1,"weekIndex":1},
+    {"name":"before-semester-in-week-one","semesterStart":"2026-09-01","selectedDate":"2026-08-31","firstWeekday":1,"weekIndex":1},
+    {"name":"sunday-is-first-monday-week","semesterStart":"2026-09-01","selectedDate":"2026-09-06","firstWeekday":1,"weekIndex":1},
+    {"name":"sunday-is-second-sunday-week","semesterStart":"2026-09-01","selectedDate":"2026-09-06","firstWeekday":0,"weekIndex":2},
+    {"name":"previous-week-zero","semesterStart":"2026-09-01","selectedDate":"2026-08-30","firstWeekday":1,"weekIndex":0},
+    {"name":"two-weeks-before-negative","semesterStart":"2026-09-01","selectedDate":"2026-08-23","firstWeekday":1,"weekIndex":-1},
+    {"name":"later-week","semesterStart":"2026-09-01","selectedDate":"2026-12-20","firstWeekday":0,"weekIndex":17},
+    {"name":"year-rollover","semesterStart":"2025-12-31","selectedDate":"2026-01-05","firstWeekday":1,"weekIndex":2},
+    {"name":"leap-week","semesterStart":"2024-02-26","selectedDate":"2024-02-29","firstWeekday":1,"weekIndex":1},
+    {"name":"shanghai-historic-dst-civil-weeks","semesterStart":"1991-09-09","selectedDate":"1991-09-16","firstWeekday":1,"weekIndex":2}
+  ]
+}

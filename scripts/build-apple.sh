@@ -17,3 +17,4 @@ gomobile bind -target=ios,iossimulator,macos -iosversion=17.0 -macosversion=13.0
 cd "$repo_dir"
 mkdir -p apple/Tests/LifeClientCoreTests/Fixtures
 cp calendar/testdata/calendar_cases.json apple/Tests/LifeClientCoreTests/Fixtures/calendar_cases.json
+cp calendar/testdata/teaching_week_cases.json apple/Tests/LifeClientCoreTests/Fixtures/teaching_week_cases.json
