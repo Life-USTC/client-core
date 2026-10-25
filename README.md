@@ -28,7 +28,7 @@ See [the PRD and roadmap](docs/architecture.md). Cross-client delivery is tracke
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).
 
 Go clients use `github.com/Life-USTC/client-core/calendar` and
-`github.com/Life-USTC/client-core/young` at `v0.3.0`.
+`github.com/Life-USTC/client-core/young` at `v0.4.0`.
 Apple clients add this repository as a Swift package and use the `LifeClientCore`
 product. Pin the full distribution commit revision containing the updated root
 `Package.swift`; release tags identify the Go and framework source, while the
