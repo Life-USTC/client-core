@@ -24,7 +24,13 @@ and collection completeness remain in each client. Its existing consumers
 include the CLI's shared reader across catalog, workspace and school endpoints
 and the Bot's Young activity reader.
 
-See [the PRD and roadmap](docs/architecture.md). Cross-client delivery is tracked
+The `ustc` package shares undergraduate course-table request URLs, student
+identifier extraction and response parsing. Clients retain authentication,
+transport, persistence and empty-table policy. See the
+[USTC extraction PRD and roadmap](docs/ustc.md) for its two-client acceptance
+and the remaining university capabilities.
+
+See [the PRD and roadmap](docs/architecture.md). Initial shared-core delivery is tracked
 in [Task #109](https://github.com/Life-USTC/Life-USTC/issues/109).
 
 Go clients use `github.com/Life-USTC/client-core/calendar` and

@@ -1,0 +1,129 @@
+{
+  "pageURL": "https://jw.ustc.edu.cn/for-std/course-table",
+  "requests": [
+    {
+      "name": "selected-semester",
+      "semesterID": 461,
+      "studentID": "312345",
+      "url": "https://jw.ustc.edu.cn/for-std/course-table/get-data?bizTypeId=2&semesterId=461&dataId=312345"
+    },
+    {
+      "name": "student-identifier-retains-leading-zeroes",
+      "semesterID": 301,
+      "studentID": "0012345",
+      "url": "https://jw.ustc.edu.cn/for-std/course-table/get-data?bizTypeId=2&semesterId=301&dataId=0012345"
+    }
+  ],
+  "studentIDs": [
+    {
+      "name": "direct-course-table-redirect",
+      "url": "https://jw.ustc.edu.cn/for-std/course-table/312345",
+      "studentID": "312345"
+    },
+    {
+      "name": "info-course-table-redirect",
+      "url": "https://jw.ustc.edu.cn/for-std/course-table/info/0012345?semesterId=461",
+      "studentID": "0012345"
+    },
+    {
+      "name": "ignore-earlier-number",
+      "url": "https://jw.ustc.edu.cn:443/for-std/course-table/info/312345",
+      "studentID": "312345"
+    },
+    {
+      "name": "no-student-redirect",
+      "url": "https://jw.ustc.edu.cn/for-std/course-table",
+      "error": true
+    },
+    {
+      "name": "unrelated-number-is-not-a-student-identifier",
+      "url": "https://jw.ustc.edu.cn/for-std/home?semesterId=461",
+      "error": true
+    }
+  ],
+  "tables": [
+    {
+      "name": "nested-fields-take-precedence",
+      "response": "{\"studentTableVm\":{\"lessonIds\":[30,10,30],\"lessons\":[{\"id\":30,\"code\":\"CS1001.01\"},{\"id\":10,\"code\":\"MATH1001.01\"}]},\"lessonIds\":[90],\"lessons\":[{\"id\":90,\"code\":\"OTHER\"}],\"lessonId2Lesson\":{\"10\":{\"id\":10,\"code\":\"MAP\"}}}",
+      "lessonIDs": [10, 30],
+      "embeddedLessonIDs": [30, 10],
+      "lessonCodes": ["CS1001.01", "MATH1001.01"]
+    },
+    {
+      "name": "top-level-fields",
+      "response": "{\"lessonIds\":[3,1,2],\"lessons\":[{\"id\":3,\"code\":\"C\"},{\"id\":1,\"code\":\"A\"}]}",
+      "lessonIDs": [1, 2, 3],
+      "embeddedLessonIDs": [3, 1],
+      "lessonCodes": ["C", "A"]
+    },
+    {
+      "name": "empty-nested-fields-use-top-level",
+      "response": "{\"studentTableVm\":{\"lessonIds\":[],\"lessons\":[]},\"lessonIds\":[20,10],\"lessons\":[{\"id\":20,\"code\":\"TOP\"}]}",
+      "lessonIDs": [10, 20],
+      "embeddedLessonIDs": [20],
+      "lessonCodes": ["TOP"]
+    },
+    {
+      "name": "nested-identifiers-and-top-level-details",
+      "response": "{\"studentTableVm\":{\"lessonIds\":[20]},\"lessons\":[{\"id\":20,\"code\":\"TOP\"}]}",
+      "lessonIDs": [20],
+      "embeddedLessonIDs": [20],
+      "lessonCodes": ["TOP"]
+    },
+    {
+      "name": "map-details-keep-sorted-id-order-and-duplicates",
+      "response": "{\"lessonIds\":[3,1,3,9],\"lessonId2Lesson\":{\"3\":{\"id\":3,\"code\":\"C\"},\"1\":{\"id\":1,\"code\":\"A\"},\"2\":{\"id\":2,\"code\":\"UNSELECTED\"}}}",
+      "lessonIDs": [1, 3, 9],
+      "embeddedLessonIDs": [1, 3, 3],
+      "lessonCodes": ["A", "C", "C"]
+    },
+    {
+      "name": "identifiers-without-details",
+      "response": "{\"lessonIds\":[30,10,30]}",
+      "lessonIDs": [10, 30],
+      "embeddedLessonIDs": [],
+      "lessonCodes": []
+    },
+    {
+      "name": "empty-identifiers-do-not-select-unrelated-details",
+      "response": "{\"lessonIds\":[],\"lessons\":[{\"id\":90,\"code\":\"OTHER\"}]}",
+      "lessonIDs": [],
+      "embeddedLessonIDs": [],
+      "lessonCodes": []
+    },
+    {
+      "name": "missing-fields-is-empty",
+      "response": "{}",
+      "lessonIDs": [],
+      "embeddedLessonIDs": [],
+      "lessonCodes": []
+    },
+    {
+      "name": "null-response-is-empty",
+      "response": "null",
+      "lessonIDs": [],
+      "embeddedLessonIDs": [],
+      "lessonCodes": []
+    },
+    {
+      "name": "html-response-is-an-error",
+      "response": "<html><body>Login</body></html>",
+      "error": true
+    },
+    {
+      "name": "truncated-json-is-an-error",
+      "response": "{\"lessonIds\":[10,",
+      "error": true
+    },
+    {
+      "name": "non-integer-identifiers-are-an-error",
+      "response": "{\"lessonIds\":[\"10\"]}",
+      "error": true
+    },
+    {
+      "name": "malformed-embedded-details-are-an-error",
+      "response": "{\"lessonIds\":[10],\"lessons\":[{\"id\":10,\"credits\":\"four\"}]}",
+      "error": true
+    }
+  ]
+}
