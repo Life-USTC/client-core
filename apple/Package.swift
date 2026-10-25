@@ -10,7 +10,7 @@ let package = Package(
         .target(name: "LifeClientCore", dependencies: ["LifeCore"]),
         .testTarget(
             name: "LifeClientCoreTests",
-            dependencies: ["LifeClientCore"],
+            dependencies: ["LifeClientCore", "LifeCore"],
             resources: [.copy("Fixtures")]
         ),
     ]
