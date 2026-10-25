@@ -101,6 +101,8 @@ unused parallel Swift model for the embedded CLI lesson details.
    responses and native integration evidence. Keep platform interaction,
    credential storage and session lifecycle at the edge. Any additional OTP
    capability must be specified and verified explicitly.
+   The [CAS/service extraction](ustc-cas.md) retains the existing CLI form and
+   native browser/service profiles without adding OTP submission.
 
 Known contract differences to resolve before their slices:
 

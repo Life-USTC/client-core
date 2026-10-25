@@ -1,0 +1,231 @@
+{
+  "endpoints": {
+    "casLoginURL": "https://id.ustc.edu.cn/cas/login",
+    "legacyCASLoginURL": "https://passport.ustc.edu.cn/login",
+    "cookieURL": "https://id.ustc.edu.cn",
+    "aasSSOURL": "https://jw.ustc.edu.cn/ucas-sso/login",
+    "aasCASLoginURL": "https://passport.ustc.edu.cn/login?service=https%3A%2F%2Fjw.ustc.edu.cn%2Fucas-sso%2Flogin",
+    "aasRootURL": "https://jw.ustc.edu.cn/",
+    "aasHomeURL": "https://jw.ustc.edu.cn/home",
+    "blackboardCASLoginURL": "https://passport.ustc.edu.cn/login?service=https%3a%2f%2fwww.bb.ustc.edu.cn%2fwebapps%2fbb-SSOIntegrationDemo-BBLEARN%2fexecute%2fauthValidate%2fcustomLogin%3freturnUrl%3dhttp%3a%2f%2fwww.bb.ustc.edu.cn%2fwebapps%2fportal%2fframeset.jsp%26authProviderId%3d_103_1",
+    "blackboardHomeURL": "https://www.bb.ustc.edu.cn/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_1_1",
+    "graduateAppSessionURL": "https://app.ustc.edu.cn/a_ustc/api/cas/index?redirect=https://app.ustc.edu.cn/site/examManage/index&from=wap",
+    "graduateAppCASLoginURL": "https://id.ustc.edu.cn/cas/login?service=https://app.ustc.edu.cn/a_ustc/api/cas/index?redirect=https%3A%2F%2Fapp.ustc.edu.cn%2Fsite%2FtimeTableQuery%2Findex&from=wap"
+  },
+  "blackboardLinks": [
+    {
+      "name": "login-query-entities",
+      "response": "<a href=\"login.php?next=abc&amp;mode=1\">Continue</a><a href=\"ignored\">Other</a>",
+      "loginTarget": "https://www.bb.ustc.edu.cn/nginx_auth/login.php?next=abc&mode=1",
+      "finalTarget": "login.php?next=abc&mode=1",
+      "finalURL": "login.php?next=abc&mode=1",
+      "loginURL": "https://www.bb.ustc.edu.cn/nginx_auth/login.php?next=abc&mode=1"
+    },
+    {
+      "name": "first-anchor-only",
+      "response": "<a href=\"help\">Help</a><a href=\"login.php\">Login</a>",
+      "loginTarget": null,
+      "finalTarget": "help",
+      "finalURL": "help",
+      "loginURL": null
+    },
+    {
+      "name": "prefix-is-not-filename-equality",
+      "response": "<a href=\"login.php.extra\">Continue</a>",
+      "loginTarget": "https://www.bb.ustc.edu.cn/nginx_auth/login.php.extra",
+      "finalTarget": "login.php.extra",
+      "finalURL": "login.php.extra",
+      "loginURL": "https://www.bb.ustc.edu.cn/nginx_auth/login.php.extra"
+    },
+    {
+      "name": "prefix-is-case-sensitive",
+      "response": "<a href=\"Login.php\">Continue</a>",
+      "loginTarget": null,
+      "finalTarget": "Login.php",
+      "finalURL": "Login.php",
+      "loginURL": null
+    },
+    {
+      "name": "href-is-not-trimmed",
+      "response": "<a href=\" login.php?x=1 \">Continue</a>",
+      "loginTarget": null,
+      "finalTarget": " login.php?x=1 ",
+      "finalURL": "%20login.php?x=1%20",
+      "loginURL": null
+    },
+    {
+      "name": "uppercase-html-and-final-absolute",
+      "response": "<A HREF=\"https://www.bb.ustc.edu.cn/home?x=1&amp;y=2\">Continue</A>",
+      "loginTarget": null,
+      "finalTarget": "https://www.bb.ustc.edu.cn/home?x=1&y=2",
+      "finalURL": "https://www.bb.ustc.edu.cn/home?x=1&y=2",
+      "loginURL": null
+    },
+    {
+      "name": "relative-final-link",
+      "response": "<a href=\"../portal\">Continue</a>",
+      "loginTarget": null,
+      "finalTarget": "../portal",
+      "finalURL": "../portal",
+      "loginURL": null
+    },
+    {
+      "name": "missing-href-is-empty",
+      "response": "<a>Missing</a><a href=\"login.php\">Later</a>",
+      "loginTarget": null,
+      "finalTarget": "",
+      "finalURL": null,
+      "loginURL": null
+    },
+    {
+      "name": "empty-href-is-empty",
+      "response": "<a href=\"\">Empty</a>",
+      "loginTarget": null,
+      "finalTarget": "",
+      "finalURL": null,
+      "loginURL": null
+    },
+    {
+      "name": "no-anchor",
+      "response": "<p>No links</p>",
+      "loginTarget": null,
+      "finalTarget": null,
+      "finalURL": null,
+      "loginURL": null
+    },
+    {
+      "name": "invalid-foundation-url-candidate",
+      "response": "<a href=\"https://[broken\">Broken</a>",
+      "loginTarget": null,
+      "finalTarget": "https://[broken",
+      "finalURL": null,
+      "loginURL": null
+    },
+    {
+      "name": "invalid-utf8-discards-entire-document",
+      "responseBase64": "PGEgaHJlZj0ibG9naW4ucGhwIj5Db250aW51ZTwvYT7/",
+      "loginTarget": null,
+      "finalTarget": null,
+      "finalURL": null,
+      "loginURL": null
+    }
+  ],
+  "browserURLs": [
+    {
+      "name": "success",
+      "input": "https://id.ustc.edu.cn/gate/cas-success",
+      "absoluteURL": "https://id.ustc.edu.cn/gate/cas-success",
+      "host": "id.ustc.edu.cn",
+      "loginPage": false,
+      "path": "/gate/cas-success",
+      "success": true
+    },
+    {
+      "name": "success-suffix-and-query",
+      "input": "https://id.ustc.edu.cn/gate/cas-success-more?ticket=synthetic",
+      "absoluteURL": "https://id.ustc.edu.cn/gate/cas-success-more?ticket=synthetic",
+      "host": "id.ustc.edu.cn",
+      "loginPage": false,
+      "path": "/gate/cas-success-more",
+      "success": true
+    },
+    {
+      "name": "http-is-not-success",
+      "input": "http://id.ustc.edu.cn/gate/cas-success",
+      "absoluteURL": "http://id.ustc.edu.cn/gate/cas-success",
+      "host": "id.ustc.edu.cn",
+      "loginPage": false,
+      "path": "/gate/cas-success",
+      "success": false
+    },
+    {
+      "name": "host-case-is-preserved",
+      "input": "https://ID.ustc.edu.cn/gate/cas-success",
+      "absoluteURL": "https://ID.ustc.edu.cn/gate/cas-success",
+      "host": "ID.ustc.edu.cn",
+      "loginPage": false,
+      "path": "/gate/cas-success",
+      "success": false
+    },
+    {
+      "name": "login-prefix",
+      "input": "https://id.ustc.edu.cn/cas/login-extra?service=x",
+      "absoluteURL": "https://id.ustc.edu.cn/cas/login-extra?service=x",
+      "host": "id.ustc.edu.cn",
+      "loginPage": true,
+      "path": "/cas/login-extra",
+      "success": false
+    },
+    {
+      "name": "login-path-decoding",
+      "input": "https://id.ustc.edu.cn/cas/%6Cogin",
+      "absoluteURL": "https://id.ustc.edu.cn/cas/%6Cogin",
+      "host": "id.ustc.edu.cn",
+      "loginPage": true,
+      "path": "/cas/login",
+      "success": false
+    },
+    {
+      "name": "login-accepts-http",
+      "input": "http://id.ustc.edu.cn/cas/login",
+      "absoluteURL": "http://id.ustc.edu.cn/cas/login",
+      "host": "id.ustc.edu.cn",
+      "loginPage": true,
+      "path": "/cas/login",
+      "success": false
+    },
+    {
+      "name": "login-does-not-test-scheme",
+      "input": "custom://id.ustc.edu.cn/cas/login",
+      "absoluteURL": "custom://id.ustc.edu.cn/cas/login",
+      "host": "id.ustc.edu.cn",
+      "loginPage": true,
+      "path": "/cas/login",
+      "success": false
+    },
+    {
+      "name": "unrelated-host",
+      "input": "https://example.test/cas/login",
+      "absoluteURL": "https://example.test/cas/login",
+      "host": "example.test",
+      "loginPage": false,
+      "path": "/cas/login",
+      "success": false
+    },
+    {
+      "name": "relative-has-no-host",
+      "input": "/cas/login",
+      "absoluteURL": "/cas/login",
+      "host": "",
+      "loginPage": false,
+      "path": "/cas/login",
+      "success": false
+    }
+  ],
+  "legacyMarkup": [
+    {
+      "name": "plain-service",
+      "service": "https://jw.ustc.edu.cn/ucas-sso/login",
+      "serviceAbsoluteURL": "https://jw.ustc.edu.cn/ucas-sso/login",
+      "url": "https://passport.ustc.edu.cn/login?service=https://jw.ustc.edu.cn/ucas-sso/login"
+    },
+    {
+      "name": "query-fragment-plus",
+      "service": "https://example.test/path?a=one+two&b=%2F#part",
+      "serviceAbsoluteURL": "https://example.test/path?a=one+two&b=%2F#part",
+      "url": "https://passport.ustc.edu.cn/login?service=https://example.test/path?a%3Done+two%26b%3D%252F%23part"
+    },
+    {
+      "name": "unicode-and-space",
+      "service": "https://example.test/课程 name?q=考试",
+      "serviceAbsoluteURL": "https://example.test/%E8%AF%BE%E7%A8%8B%20name?q=%E8%80%83%E8%AF%95",
+      "url": "https://passport.ustc.edu.cn/login?service=https://example.test/%25E8%25AF%25BE%25E7%25A8%258B%2520name?q%3D%25E8%2580%2583%25E8%25AF%2595"
+    },
+    {
+      "name": "relative-service",
+      "service": "../home?x=1",
+      "serviceAbsoluteURL": "../home?x=1",
+      "url": "https://passport.ustc.edu.cn/login?service=../home?x%3D1"
+    }
+  ]
+}

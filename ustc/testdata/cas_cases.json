@@ -1,0 +1,268 @@
+{
+  "loginURLs": {
+    "jw": "https://id.ustc.edu.cn/cas/login?service=https%3A%2F%2Fjw.ustc.edu.cn%2Fucas-sso%2Flogin",
+    "blackboard": "https://passport.ustc.edu.cn/login?service=https%3A%2F%2Fwww.bb.ustc.edu.cn%2Fwebapps%2Fbb-SSOIntegrationDemo-BBLEARN%2Fexecute%2FauthValidate%2FcustomLogin%3FreturnUrl%3Dhttp%3A%2F%2Fwww.bb.ustc.edu.cn%2Fwebapps%2Fportal%2Fframeset.jsp%26authProviderId%3D_103_1",
+    "catalog": "https://id.ustc.edu.cn/cas/login?service=https%3A%2F%2Fcatalog.ustc.edu.cn%2F"
+  },
+  "serviceURLs": [
+    {
+      "name": "yjs1-app",
+      "service": "https://yjs1.ustc.edu.cn/gsapp/sys/wdkbapp/*default/index.do",
+      "url": "https://id.ustc.edu.cn/cas/login?service=https%3A%2F%2Fyjs1.ustc.edu.cn%2Fgsapp%2Fsys%2Fwdkbapp%2F%2Adefault%2Findex.do"
+    },
+    {
+      "name": "nested-query",
+      "service": "https://yjs1.ustc.edu.cn/gsapp/sys/app/index.do?next=a+b&label=课程 查询",
+      "url": "https://id.ustc.edu.cn/cas/login?service=https%3A%2F%2Fyjs1.ustc.edu.cn%2Fgsapp%2Fsys%2Fapp%2Findex.do%3Fnext%3Da%2Bb%26label%3D%E8%AF%BE%E7%A8%8B+%E6%9F%A5%E8%AF%A2"
+    }
+  ],
+  "nginxURLs": [
+    {
+      "name": "calendar",
+      "target": "https://www.bb.ustc.edu.cn/webapps/calendar/viewPersonal",
+      "url": "https://passport.ustc.edu.cn/login?service=http%3A%2F%2Fwww.bb.ustc.edu.cn%2Fnginx_auth%2Flogin.php%3Fnext%3D68747470733a2f2f7777772e62622e757374632e6564752e636e2f776562617070732f63616c656e6461722f76696577506572736f6e616c"
+    },
+    {
+      "name": "target-query",
+      "target": "https://www.bb.ustc.edu.cn/webapps/calendar/viewPersonal?mode=all&label=课程",
+      "url": "https://passport.ustc.edu.cn/login?service=http%3A%2F%2Fwww.bb.ustc.edu.cn%2Fnginx_auth%2Flogin.php%3Fnext%3D68747470733a2f2f7777772e62622e757374632e6564752e636e2f776562617070732f63616c656e6461722f76696577506572736f6e616c3f6d6f64653d616c6c266c6162656c3de8afbee7a88b"
+    }
+  ],
+  "pages": [
+    {
+      "name": "fields-trim-and-first-selector",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "response": "<div id=\"login-croypto\"> MDEyMzQ1Njc4OWFiY2RlZg== </div><div id=\"login-croypto\">ignored</div><div id=\"login-page-flowkey\"> flow-1\n</div>",
+      "page": {
+        "URL": "https://id.ustc.edu.cn/cas/login",
+        "CryptoKey": "MDEyMzQ1Njc4OWFiY2RlZg==",
+        "Execution": "flow-1"
+      }
+    },
+    {
+      "name": "descendant-text-and-entities",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "response": "<span id=\"login-croypto\"><b>MDEyMzQ1Njc4OWFiY2RlZg==</b></span><div id=\"login-page-flowkey\">flow&amp;next</div>",
+      "page": {
+        "URL": "https://id.ustc.edu.cn/cas/login",
+        "CryptoKey": "MDEyMzQ1Njc4OWFiY2RlZg==",
+        "Execution": "flow&next"
+      }
+    },
+    {
+      "name": "legacy-missing-key",
+      "url": "https://passport.ustc.edu.cn/login",
+      "response": "<div id=\"login-page-flowkey\">flow-1</div>",
+      "page": {
+        "URL": "",
+        "CryptoKey": "",
+        "Execution": ""
+      },
+      "error": "parse login page https://passport.ustc.edu.cn/login: missing auth fields"
+    },
+    {
+      "name": "modern-missing-execution",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "response": "<div id=\"login-croypto\">MDEyMzQ1Njc4OWFiY2RlZg==</div>",
+      "page": {
+        "URL": "",
+        "CryptoKey": "",
+        "Execution": ""
+      },
+      "error": "parse login page https://id.ustc.edu.cn/cas/login: missing auth fields"
+    },
+    {
+      "name": "already-reached-jw",
+      "url": "https://jw.ustc.edu.cn/home",
+      "response": "<html>Home</html>",
+      "page": {
+        "URL": "https://jw.ustc.edu.cn/home",
+        "CryptoKey": "",
+        "Execution": ""
+      },
+      "alreadyAuthenticated": true,
+      "error": "already authenticated"
+    },
+    {
+      "name": "missing-field-on-service-host",
+      "url": "https://www.bb.ustc.edu.cn/webapps/calendar/viewPersonal",
+      "response": "<div id=\"login-page-flowkey\">retained</div>",
+      "page": {
+        "URL": "https://www.bb.ustc.edu.cn/webapps/calendar/viewPersonal",
+        "CryptoKey": "",
+        "Execution": "retained"
+      },
+      "alreadyAuthenticated": true,
+      "error": "already authenticated"
+    },
+    {
+      "name": "case-insensitive-login-host",
+      "url": "https://ID.USTC.EDU.CN/cas/login",
+      "response": "",
+      "page": {
+        "URL": "",
+        "CryptoKey": "",
+        "Execution": ""
+      },
+      "error": "parse login page https://ID.USTC.EDU.CN/cas/login: missing auth fields"
+    }
+  ],
+  "forms": [
+    {
+      "name": "ascii",
+      "username": "test-user",
+      "password": "test-password",
+      "page": {
+        "URL": "https://id.ustc.edu.cn/cas/login",
+        "CryptoKey": "MDEyMzQ1Njc4OWFiY2RlZg==",
+        "Execution": "flow-1"
+      },
+      "encoded": "_eventId=submit&croypto=MDEyMzQ1Njc4OWFiY2RlZg%3D%3D&execution=flow-1&geolocation=&password=c7K9hoi6vxbILr1diHv57A%3D%3D&type=UsernamePassword&username=test-user"
+    },
+    {
+      "name": "utf8-multiple-blocks",
+      "username": "用户+one",
+      "password": "课程密码-and-more-than-one-block",
+      "page": {
+        "URL": "https://id.ustc.edu.cn/cas/login",
+        "CryptoKey": "MDEyMzQ1Njc4OWFiY2RlZg==",
+        "Execution": "flow&2"
+      },
+      "encoded": "_eventId=submit&croypto=MDEyMzQ1Njc4OWFiY2RlZg%3D%3D&execution=flow%262&geolocation=&password=Dd6NyuDrgc04iNjCb18JK7JRee6pBRX5Fxd%2F2vP2LiHD0gtjF%2FnNaNNGMBDgnAfX&type=UsernamePassword&username=%E7%94%A8%E6%88%B7%2Bone"
+    },
+    {
+      "name": "empty-password",
+      "username": "test-user",
+      "password": "",
+      "page": {
+        "URL": "https://id.ustc.edu.cn/cas/login",
+        "CryptoKey": "MDEyMzQ1Njc4OWFiY2RlZg==",
+        "Execution": "flow-3"
+      },
+      "encoded": "_eventId=submit&croypto=MDEyMzQ1Njc4OWFiY2RlZg%3D%3D&execution=flow-3&geolocation=&password=N3Ii4GGpJMWRzZwn6hY%2B1A%3D%3D&type=UsernamePassword&username=test-user"
+    },
+    {
+      "name": "key-trimming",
+      "username": "test-user",
+      "password": "0123456789abcdef",
+      "page": {
+        "URL": "https://id.ustc.edu.cn/cas/login",
+        "CryptoKey": " MDEyMzQ1Njc4OWFiY2RlZg==\n",
+        "Execution": "flow-4"
+      },
+      "encoded": "_eventId=submit&croypto=+MDEyMzQ1Njc4OWFiY2RlZg%3D%3D%0A&execution=flow-4&geolocation=&password=cnJ%2BiB7c%2FQEApxhoeQm1ZTdyIuBhqSTFkc2cJ%2BoWPtQ%3D&type=UsernamePassword&username=test-user"
+    },
+    {
+      "name": "invalid-base64-key",
+      "username": "test-user",
+      "password": "password",
+      "page": {
+        "URL": "https://id.ustc.edu.cn/cas/login",
+        "CryptoKey": "!",
+        "Execution": "flow"
+      },
+      "error": "encrypt CAS password: illegal base64 data at input byte 0"
+    },
+    {
+      "name": "invalid-aes-key-length",
+      "username": "test-user",
+      "password": "password",
+      "page": {
+        "URL": "https://id.ustc.edu.cn/cas/login",
+        "CryptoKey": "c2hvcnQ=",
+        "Execution": "flow"
+      },
+      "error": "encrypt CAS password: crypto/aes: invalid key size 5"
+    }
+  ],
+  "results": [
+    {
+      "name": "target-host-precedes-page-error",
+      "url": "https://JW.USTC.EDU.CN/home",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"error\">failed</div>Dynamic Password"
+    },
+    {
+      "name": "dynamic-password-before-error",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"error\">failed</div>DYNAMIC PASSWORD",
+      "error": "school login requires an OTP challenge that the HTTP client could not complete"
+    },
+    {
+      "name": "otp-element",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<span>OTP</span>",
+      "error": "school login requires an OTP challenge that the HTTP client could not complete"
+    },
+    {
+      "name": "selector-priority-and-whitespace",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"message\">later</div><div class=\"alert-error\">middle</div><div class=\"ant-form-item-explain-error\"> Wrong\n <b>password</b> </div>",
+      "error": "school login failed: Wrong password"
+    },
+    {
+      "name": "first-blank-selector-continues-to-next-class",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"error\"> </div><div class=\"error\">ignored second</div><div class=\"message\">Visible message</div>",
+      "error": "school login failed: Visible message"
+    },
+    {
+      "name": "nil-final-url",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "",
+      "error": "school login did not complete"
+    },
+    {
+      "name": "nil-final-url-still-reports-error",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"error\">Failure</div>",
+      "error": "school login failed: Failure"
+    },
+    {
+      "name": "unexpected-host",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "Login",
+      "error": "school login did not reach jw.ustc.edu.cn; ended at id.ustc.edu.cn"
+    },
+    {
+      "name": "error-selector-alert-error",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"alert-error\">Invalid &amp; expired</div>",
+      "error": "school login failed: Invalid & expired"
+    },
+    {
+      "name": "error-selector-alert-danger",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"alert-danger\">Invalid &amp; expired</div>",
+      "error": "school login failed: Invalid & expired"
+    },
+    {
+      "name": "error-selector-login-error",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"login-error\">Invalid &amp; expired</div>",
+      "error": "school login failed: Invalid & expired"
+    },
+    {
+      "name": "error-selector-error",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"error\">Invalid &amp; expired</div>",
+      "error": "school login failed: Invalid & expired"
+    },
+    {
+      "name": "error-selector-message",
+      "url": "https://id.ustc.edu.cn/cas/login",
+      "expectedHost": "jw.ustc.edu.cn",
+      "response": "<div class=\"message\">Invalid &amp; expired</div>",
+      "error": "school login failed: Invalid & expired"
+    }
+  ]
+}
