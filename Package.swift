@@ -8,8 +8,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "LifeCore",
-            url: "https://github.com/Life-USTC/client-core/releases/download/v0.6.0/LifeCore.xcframework.zip",
-            checksum: "f11e0746471f9d4b3619847ea0a389bc4886c23199bd5199b0eb29f358a6d9ce"
+            url: "https://github.com/Life-USTC/client-core/releases/download/v0.7.0/LifeCore.xcframework.zip",
+            checksum: "e16bb3fc8d8e5a8c357f3651e459017b12eae1e1dce93d6e78f8fec6d1f120a0"
         ),
         .target(
             name: "LifeClientCore",
