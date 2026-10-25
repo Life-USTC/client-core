@@ -102,11 +102,15 @@ func parseYJS1Rows[T any](data []byte) ([]T, error) {
 }
 
 // ParseYJS1Terms preserves source order and the current-term marker. Selecting a
-// requested or default semester remains the client's policy.
+// requested or default semester remains the client's policy. Missing/null rows
+// remain nil so the CLI retains its existing term-cache refetch behavior.
 func ParseYJS1Terms(data []byte) ([]YJS1Semester, error) {
 	rows, err := parseYJS1Rows[yjs1Term](data)
 	if err != nil {
 		return nil, err
+	}
+	if rows == nil {
+		return nil, nil
 	}
 	return yjs1SemestersFromTerms(rows), nil
 }

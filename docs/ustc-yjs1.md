@@ -28,7 +28,10 @@ does not add pagination or claim that upstream results are complete beyond it.
 name fallback and current flag. CLI keeps `pickGraduateYJS1Term`: explicit ID,
 otherwise current term, otherwise first term. This remains distinct from the
 undergraduate catalog policy. Course projections take the already-selected
-semester ID rather than selecting a semester themselves.
+semester ID rather than selecting a semester themselves. Absent/null term rows
+remain nil, while an explicit empty row list remains nonnil. The CLI keeps this
+distinction in its existing session cache, and allocates its public semester
+output as before so an empty listing still serializes as an array.
 
 No YJS1 mobile bindings are added: the current iOS application does not consume
 these endpoints. An unused bridge would not establish shared production use.
@@ -64,7 +67,7 @@ remaining protocol profiles and their integration acceptance.
 
 ## Fixtures and verification
 
-`ustc/testdata/yjs1_cases.json` contains 44 parser cases, seven form cases, six
+`ustc/testdata/yjs1_cases.json` contains 47 parser cases, seven form cases, six
 user-ID cases and the 13 endpoint values. These are synthetic compatibility
 examples from `CLI/internal/school/graduate.go` and its four existing projection
 tests, not captured university account data or live-login evidence.

@@ -481,13 +481,13 @@
       "name": "terms-empty-envelope",
       "kind": "terms",
       "response": "{}",
-      "expected": []
+      "expected": null
     },
     {
       "name": "terms-null-envelope",
       "kind": "terms",
       "response": "null",
-      "expected": []
+      "expected": null
     },
     {
       "name": "terms-code-error",
@@ -507,7 +507,7 @@
       "name": "terms-first-json-value",
       "kind": "terms",
       "response": "{} {\"ignored\":true}",
-      "expected": []
+      "expected": null
     },
     {
       "name": "curriculum-empty-envelope",
@@ -688,6 +688,24 @@
       "expected": null,
       "error": "*",
       "infoResponse": "{"
+    },
+    {
+      "name": "terms-empty-rows-remain-nonnil",
+      "kind": "terms",
+      "response": "{\"datas\":{\"response\":{\"rows\":[]}}}",
+      "expected": []
+    },
+    {
+      "name": "terms-null-rows-remain-nil",
+      "kind": "terms",
+      "response": "{\"datas\":{\"response\":{\"rows\":null}}}",
+      "expected": null
+    },
+    {
+      "name": "terms-missing-rows-remain-nil",
+      "kind": "terms",
+      "response": "{\"datas\":{\"response\":{}}}",
+      "expected": null
     }
   ],
   "userIDs": [
