@@ -21,3 +21,4 @@ cp calendar/testdata/teaching_week_cases.json apple/Tests/LifeClientCoreTests/Fi
 cp young/testdata/query_cases.json apple/Tests/LifeClientCoreTests/Fixtures/young_query_cases.json
 cp pagination/testdata/progress_cases.json apple/Tests/LifeClientCoreTests/Fixtures/page_progress_cases.json
 cp ustc/testdata/course_table_cases.json apple/Tests/LifeClientCoreTests/Fixtures/ustc_course_table_cases.json
+cp ustc/testdata/academic_cases.json apple/Tests/LifeClientCoreTests/Fixtures/ustc_academic_cases.json

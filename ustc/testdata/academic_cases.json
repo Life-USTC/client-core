@@ -1,0 +1,372 @@
+{
+  "scoreSemestersURL": "https://jw.ustc.edu.cn/for-std/grade/sheet/getSemesters",
+  "scoreTypesURL": "https://jw.ustc.edu.cn/for-std/grade/sheet/getGradeSheetTypes",
+  "examURL": "https://jw.ustc.edu.cn/for-std/exam-arrange",
+  "numericScoreURL": "https://jw.ustc.edu.cn/for-std/grade/sheet/getGradeList?semesterIds=301%2C9&trainTypeId=1",
+  "scalarScoreURL": "https://jw.ustc.edu.cn/for-std/grade/sheet/getGradeList?trainTypeId=1&semesterIds",
+  "scores": [
+    {
+      "name": "numeric-precedence-summary-and-semester-sort",
+      "format": "numeric",
+      "response": "{\"overview\": {\"gpa\": 3.08, \"passedCredits\": 140, \"notPassedCredits\": 4, \"weightedScore\": 81.05, \"arithmeticScore\": 81.68}, \"stdGradeRank\": {\"startSemesterName\": \"2021秋\", \"endSemesterName\": \"2025春\", \"gpa\": 3.01, \"grade\": \"2021\", \"majorName\": \"数学\", \"majorRank\": 5, \"majorStdCount\": 30}, \"semesters\": [{\"id\": 9, \"scores\": [{\"courseNameCh\": \"旧课程\", \"courseCode\": \"OLD\", \"lessonCode\": \"OLD.01\", \"gp\": 4.3, \"credits\": 2, \"scoreCh\": \"95\"}]}, {\"id\": 301, \"scores\": [{\"semesterId\": 301, \"semesterAssoc\": 9, \"semesterName\": \" 显式学期 \", \"semesterCh\": \"备用学期\", \"courseName\": \" Z课程 \", \"courseNameCh\": \"备用名称\", \"courseCode\": \"\", \"course\": {\"code\": \"FALLBACK\", \"credits\": 4}, \"credits\": 0, \"gp\": null, \"lessonCode\": \"Z.01\", \"scoreCh\": \"通过\", \"score\": \"ignored\", \"scoreText\": \"通过描述\", \"gradeDetail\": \" 记载 \"}, {\"semesterAssoc\": 301, \"semester\": {\"semesterCn\": \"嵌套学期\"}, \"course\": {\"nameZh\": \"A课程\", \"code\": \"A\", \"credits\": 3}, \"lessonCode\": \"A.01\", \"score\": \"90\"}]}]}",
+      "expected": {
+        "overview": {
+          "gpa": 3.08,
+          "passedCredits": 140,
+          "notPassedCredits": 4,
+          "weightedScore": 81.05,
+          "arithmeticScore": 81.68
+        },
+        "rank": {
+          "startSemesterName": "2021秋",
+          "endSemesterName": "2025春",
+          "gpa": 3.01,
+          "grade": "2021",
+          "majorName": "数学",
+          "majorRank": 5,
+          "majorStdCount": 30
+        },
+        "items": [
+          {
+            "semesterId": "301",
+            "semesterName": "查询学期",
+            "courseName": "A课程",
+            "courseCode": "A",
+            "lessonCode": "A.01",
+            "credits": 3,
+            "gradePoint": 0,
+            "score": "90"
+          },
+          {
+            "semesterId": "301",
+            "semesterName": "显式学期",
+            "courseName": "Z课程",
+            "courseCode": "FALLBACK",
+            "lessonCode": "Z.01",
+            "credits": 4,
+            "gradePoint": 0,
+            "score": "通过",
+            "gradeText": "记载"
+          },
+          {
+            "semesterId": "9",
+            "semesterName": "旧学期",
+            "courseName": "旧课程",
+            "courseCode": "OLD",
+            "lessonCode": "OLD.01",
+            "credits": 2,
+            "gradePoint": 4.3,
+            "score": "95"
+          }
+        ],
+        "summary": {
+          "gpa": 3.08,
+          "totalCredits": 144,
+          "earnedCredits": 140,
+          "failedCredits": 4,
+          "weightedAverage": 81.05,
+          "averageScore": 81.68,
+          "fromSemester": "2021秋",
+          "toSemester": "2025春",
+          "periodGPA": 3.01,
+          "ranking": "全校2021年级数学专业 GPA 排名 5/30"
+        }
+      },
+      "semesterNames": {
+        "9": "旧学期",
+        "301": "查询学期"
+      }
+    },
+    {
+      "name": "numeric-empty-overview-no-summary",
+      "format": "numeric",
+      "response": "{\"overview\": {\"gpa\": 0}, \"semesters\": []}",
+      "expected": {
+        "overview": {
+          "gpa": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "name": "numeric-empty-rank-keeps-summary",
+      "format": "numeric",
+      "response": "{\"stdGradeRank\": {}}",
+      "expected": {
+        "rank": {},
+        "items": [],
+        "summary": {
+          "fromSemester": "",
+          "toSemester": "",
+          "periodGPA": 0
+        }
+      }
+    },
+    {
+      "name": "numeric-rejects-string-gpa",
+      "format": "numeric",
+      "response": "{\"semesters\": [{\"scores\": [{\"gp\": \"4.3\"}]}]}",
+      "error": true
+    },
+    {
+      "name": "numeric-rejects-string-semester",
+      "format": "numeric",
+      "response": "{\"semesters\": [{\"scores\": [{\"semesterAssoc\": \"301\"}]}]}",
+      "error": true
+    },
+    {
+      "name": "numeric-rejects-boolean-overview",
+      "format": "numeric",
+      "response": "{\"overview\": {\"gpa\": true}}",
+      "error": true
+    },
+    {
+      "name": "scalar-preserves-order-strings-nil-and-zero",
+      "format": "scalar",
+      "response": "{\"overview\": {\"gpa\": 3.08}, \"stdGradeRank\": {\"majorName\": \"数学\", \"majorRank\": 5, \"majorStdCount\": 30}, \"semesters\": [{\"scores\": [{\"semesterAssoc\": \"9\", \"semesterCh\": \"旧学期\", \"courseNameCh\": \" 旧课程 \", \"courseCode\": \"OLD\", \"lessonCode\": \"OLD.01\", \"credits\": \"6.0\", \"gp\": \"4.3\", \"scoreCh\": \"95\"}]}, {\"scores\": [{\"semesterAssoc\": 301, \"semesterCh\": \"新学期\", \"courseNameCh\": \"新课程\", \"courseCode\": \"NEW\", \"lessonCode\": \"NEW.01\", \"credits\": 6.0, \"gp\": 0, \"scoreCh\": 95}, {\"semesterAssoc\": \"301\", \"courseNameCh\": \"通过课程\", \"lessonCode\": \"PASS.01\", \"gp\": null, \"credits\": null, \"scoreCh\": \"通过\"}]}]}",
+      "expected": {
+        "overview": {
+          "gpa": 3.08
+        },
+        "rank": {
+          "majorName": "数学",
+          "majorRank": 5,
+          "majorStdCount": 30
+        },
+        "items": [
+          {
+            "semesterId": "9",
+            "semesterName": "旧学期",
+            "courseName": " 旧课程 ",
+            "courseCode": "OLD",
+            "lessonCode": "OLD.01",
+            "credits": 6,
+            "gradePoint": 4.3,
+            "score": "95"
+          },
+          {
+            "semesterId": "301",
+            "semesterName": "新学期",
+            "courseName": "新课程",
+            "courseCode": "NEW",
+            "lessonCode": "NEW.01",
+            "credits": 6,
+            "gradePoint": 0,
+            "score": "95"
+          },
+          {
+            "semesterId": "301",
+            "courseName": "通过课程",
+            "lessonCode": "PASS.01",
+            "credits": 0,
+            "gradePoint": null,
+            "score": "通过"
+          }
+        ]
+      }
+    },
+    {
+      "name": "scalar-metadata-uses-optional-number-and-string-accessors",
+      "format": "scalar",
+      "response": "{\"overview\": {\"gpa\": \"3.08\"}, \"stdGradeRank\": {\"majorName\": 42, \"majorRank\": \"5\", \"majorStdCount\": true}, \"semesters\": [{\"scores\": [{\"courseNameCh\": true, \"semesterAssoc\": 100.0, \"credits\": false, \"gp\": false, \"scoreCh\": false}]}]}",
+      "expected": {
+        "overview": {},
+        "rank": {
+          "majorStdCount": 1
+        },
+        "items": [
+          {
+            "courseName": "true",
+            "semesterId": "100",
+            "credits": 0,
+            "gradePoint": null,
+            "score": "false"
+          }
+        ]
+      }
+    },
+    {
+      "name": "scalar-boolean-metadata-and-fractional-rank",
+      "format": "scalar",
+      "response": "{\"overview\": {\"gpa\": true}, \"stdGradeRank\": {\"majorName\": \"\", \"majorRank\": 2.9, \"majorStdCount\": 0}}",
+      "expected": {
+        "overview": {
+          "gpa": 1
+        },
+        "rank": {
+          "majorName": "",
+          "majorRank": 2,
+          "majorStdCount": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "name": "scalar-invalid-optional-grade-point",
+      "format": "scalar",
+      "response": "{\"semesters\": [{\"scores\": [{\"gp\": \"尚未评分\", \"credits\": \"invalid\", \"scoreCh\": {}}]}]}",
+      "expected": {
+        "items": [
+          {
+            "gradePoint": null,
+            "credits": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "scalar-foundation-number-text",
+      "format": "scalar",
+      "response": "{\"semesters\":[{\"scores\":[{\"semesterAssoc\":6.0,\"courseNameCh\":1e2,\"courseCode\":0.0,\"lessonCode\":1.25,\"scoreCh\":1e-7}]}]}",
+      "expected": {
+        "items": [
+          {
+            "semesterId": "6",
+            "courseName": "100",
+            "courseCode": "0",
+            "lessonCode": "1.25",
+            "score": "1e-07"
+          }
+        ]
+      }
+    },
+    {
+      "name": "scalar-empty-object",
+      "format": "scalar",
+      "response": "{}",
+      "expected": {
+        "items": []
+      }
+    },
+    {
+      "name": "scalar-empty-array",
+      "format": "scalar",
+      "response": "[]",
+      "expected": {
+        "items": []
+      }
+    },
+    {
+      "name": "scalar-rejects-json-fragment",
+      "format": "scalar",
+      "response": "null",
+      "error": true
+    },
+    {
+      "name": "scalar-rejects-trailing-json",
+      "format": "scalar",
+      "response": "{} {}",
+      "error": true
+    },
+    {
+      "name": "scalar-rejects-broken-json",
+      "format": "scalar",
+      "response": "{",
+      "error": true
+    }
+  ],
+  "exams": [
+    {
+      "name": "status-sorts-and-keeps-descendant-text",
+      "format": "status",
+      "response": "<table><tbody>\n<tr><td>高等<b>数学</b></td><td>MATH1001.01</td><td>期末</td><td>2025-07-02 08:00</td><td>三教3A101</td><td>18</td><td>待参加</td><td>闭卷</td></tr>\n<tr><td>程序设计基础</td><td>CS1001.01</td><td>期中</td><td>2025-06-30 14:00</td><td>东区2A201</td><td>27</td><td>待参加</td></tr>\n</tbody></table>",
+      "expected": [
+        {
+          "courseName": "程序设计基础",
+          "lessonCode": "CS1001.01",
+          "examType": "期中",
+          "dateTime": "2025-06-30 14:00",
+          "location": "东区2A201",
+          "seat": "27",
+          "status": "待参加"
+        },
+        {
+          "courseName": "高等数学",
+          "lessonCode": "MATH1001.01",
+          "examType": "期末",
+          "dateTime": "2025-07-02 08:00",
+          "location": "三教3A101",
+          "seat": "18",
+          "status": "待参加"
+        }
+      ]
+    },
+    {
+      "name": "status-four-columns-and-ignored-short-or-empty-rows",
+      "format": "status",
+      "response": "<table><tbody><tr><td>Course</td><td>C.01</td><td>Final</td><td>待定</td></tr><tr><td>too</td><td>short</td></tr><tr><td> </td><td>X</td><td>Y</td><td>Z</td></tr></tbody></table>",
+      "expected": [
+        {
+          "courseName": "Course",
+          "lessonCode": "C.01",
+          "examType": "Final",
+          "dateTime": "待定"
+        }
+      ]
+    },
+    {
+      "name": "status-empty-table",
+      "format": "status",
+      "response": "<table><tbody></tbody></table>",
+      "expected": []
+    },
+    {
+      "name": "room-selector-own-text-order-and-fields",
+      "format": "room",
+      "response": "<table><tbody><tr><td>ignored</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td></tr></tbody></table><table id=\"exams\"><tbody>\n<tr><td>MATH<small>ignored</small>.01</td><td>期末</td><td>高等&nbsp;数学</td><td>2025-07-02 08:00-10:00</td><td>3A101</td><td>三教</td><td>东区</td><td>携带<br>证件</td></tr>\n<tr><td>CS.01</td><td>期中</td><td>程序设计</td><td>2025-06-30 14:00-16:00</td><td>2A201</td><td>二教</td><td>西区</td><td>机考</td></tr>\n<tr><td>short</td></tr></tbody></table>",
+      "expected": [
+        {
+          "lessonCode": "MATH.01",
+          "examType": "期末",
+          "courseName": "高等 数学",
+          "dateTime": "2025-07-02 08:00-10:00",
+          "roomName": "3A101",
+          "buildingName": "三教",
+          "district": "东区",
+          "detail": "携带 证件"
+        },
+        {
+          "lessonCode": "CS.01",
+          "examType": "期中",
+          "courseName": "程序设计",
+          "dateTime": "2025-06-30 14:00-16:00",
+          "roomName": "2A201",
+          "buildingName": "二教",
+          "district": "西区",
+          "detail": "机考"
+        }
+      ]
+    },
+    {
+      "name": "room-keeps-date-text-for-native-policy",
+      "format": "room",
+      "response": "<table id=\"exams\"><tbody><tr><td>C.01</td><td>期末</td><td>课程</td><td>待定</td><td></td><td></td><td></td><td></td></tr></tbody></table>",
+      "expected": [
+        {
+          "lessonCode": "C.01",
+          "examType": "期末",
+          "courseName": "课程",
+          "dateTime": "待定"
+        }
+      ]
+    },
+    {
+      "name": "room-does-not-infer-status-format",
+      "format": "room",
+      "response": "<table><tbody><tr><td>课程</td><td>C.01</td><td>期末</td><td>2025-07-02 08:00</td></tr></tbody></table>",
+      "expected": []
+    },
+    {
+      "name": "room-empty-table",
+      "format": "room",
+      "response": "<table id=\"exams\"><tbody></tbody></table>",
+      "expected": []
+    },
+    {
+      "name": "room-invalid-utf8",
+      "format": "room",
+      "responseBase64": "/w==",
+      "error": true
+    }
+  ]
+}
