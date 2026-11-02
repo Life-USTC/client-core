@@ -74,6 +74,31 @@ unused parallel Swift model for the embedded CLI lesson details.
 
 ## Delivery sequence
 
+### Delivered consumer integration
+
+All five extraction slices below now have released core implementations and
+production consumers. The Go clients use `v0.8.0`; iOS adopted the matching Apple
+distribution in [iOS #136](https://github.com/Life-USTC/Life-USTC/pull/136), merged
+on October 28, 2026.
+
+| Slice | Core source / Apple distribution | CLI consumer | iOS consumer |
+| --- | --- | --- | --- |
+| Undergraduate course table | #14 / #17 | Life-USTC/cli#101 | Life-USTC/Life-USTC#136 |
+| Undergraduate catalog, scores and exams | #18, #22 / #20, #23 | Life-USTC/cli#102, Life-USTC/cli#104 | Life-USTC/Life-USTC#136 |
+| Blackboard homework | #18 / #20 | Life-USTC/cli#102 | Life-USTC/Life-USTC#136 |
+| Graduate YJS1 and static/app curriculum | #22 / #23 | Life-USTC/cli#104 | Life-USTC/Life-USTC#136 |
+| CAS and service protocols | #24 / #25 | Life-USTC/cli#106 | Life-USTC/Life-USTC#136 |
+
+The iOS PR records passing native tests, all 93 required server-journey captures,
+standard screenshots and an IPA build at its reviewed head. Its merge completes
+the previously pending consumer integration. Production OAuth and TestFlight
+acceptance remain tracked separately in iOS #100 and #107; fixture tests and a
+signed build do not establish either interactive acceptance. The parser-profile
+differences documented below remain intentional and have not been resolved by
+live university response evidence.
+
+### Extraction scope
+
 1. **Undergraduate course table in both clients.** Ship this slice and the
    versioned framework, preserving the existing static lecture import and CLI
    curriculum output. Keep the parent Task open.
