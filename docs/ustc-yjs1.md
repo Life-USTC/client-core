@@ -44,8 +44,11 @@ remaining protocol profiles and their integration acceptance.
 - JSON decoding accepts the first JSON value, keeps strict string fields and
   decodes mixed score values with the existing default `encoding/json` number
   behavior. An empty or `"0"` response code succeeds; other codes retain the
-  current error text. The first map-iterated `datas` entry supplies rows, with no
-  inferred key, merged sets or ordering guarantee across multiple data sets.
+  current error text. A single `datas` entry supplies rows regardless of its key.
+  Multiple entries are rejected as ambiguous, including empty/null siblings;
+  choosing an arbitrary map entry could silently import the wrong academic data.
+  Absent/null/empty `datas` remains an empty result. No endpoint-specific key is
+  inferred without an authoritative upstream contract.
 - Course IDs use the leading numeric part of `WID`; names and codes retain
   existing whitespace handling. Teachers retain delimiter splitting, sorting
   and deduplication. Schedule text pairs semicolon-separated times and weeks
@@ -67,7 +70,7 @@ remaining protocol profiles and their integration acceptance.
 
 ## Fixtures and verification
 
-`ustc/testdata/yjs1_cases.json` contains 47 parser cases, seven form cases, six
+`ustc/testdata/yjs1_cases.json` contains 56 parser cases, seven form cases, six
 user-ID cases and the 13 endpoint values. These are synthetic compatibility
 examples from `CLI/internal/school/graduate.go` and its four existing projection
 tests, not captured university account data or live-login evidence.

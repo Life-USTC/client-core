@@ -706,6 +706,69 @@
       "kind": "terms",
       "response": "{\"datas\":{\"response\":{}}}",
       "expected": null
+    },
+    {
+      "name": "terms-rejects-multiple-data-sets",
+      "kind": "terms",
+      "response": "{\"code\":\"0\",\"datas\":{\"first\":{\"rows\":[]},\"second\":{\"rows\":[]}}}",
+      "error": "graduate yjs1 response contains multiple data sets"
+    },
+    {
+      "name": "curriculum-rejects-multiple-data-sets",
+      "kind": "curriculum",
+      "response": "{\"code\":\"0\",\"datas\":{\"first\":{\"rows\":[]},\"second\":{\"rows\":[]}}}",
+      "error": "graduate yjs1 response contains multiple data sets"
+    },
+    {
+      "name": "exams-rejects-multiple-data-sets",
+      "kind": "exams",
+      "response": "{\"code\":\"0\",\"datas\":{\"first\":{\"rows\":[]},\"second\":{\"rows\":[]}}}",
+      "error": "graduate yjs1 response contains multiple data sets"
+    },
+    {
+      "name": "homework-rejects-multiple-data-sets",
+      "kind": "homework",
+      "response": "{\"code\":\"0\",\"datas\":{\"first\":{\"rows\":[]},\"second\":{\"rows\":[]}}}",
+      "error": "graduate yjs1 response contains multiple data sets"
+    },
+    {
+      "name": "scores-rejects-multiple-data-sets",
+      "kind": "scores",
+      "response": "{\"code\":\"0\",\"datas\":{\"first\":{\"rows\":[]},\"second\":{\"rows\":[]}}}",
+      "error": "graduate yjs1 response contains multiple data sets"
+    },
+    {
+      "name": "scores-stop-on-ambiguous-info",
+      "kind": "scores",
+      "infoResponse": "{\"code\":\"0\",\"datas\":{\"first\":{\"rows\":[]},\"second\":{\"rows\":[]}}}",
+      "response": "{\"code\":\"0\",\"datas\":{}}",
+      "error": "graduate yjs1 response contains multiple data sets"
+    },
+    {
+      "name": "terms-rejects-null-sibling-data-set",
+      "kind": "terms",
+      "response": "{\"code\":\"0\",\"datas\":{\"one\":{\"rows\":[]},\"two\":null}}",
+      "error": "graduate yjs1 response contains multiple data sets"
+    },
+    {
+      "name": "terms-multiple-data-sets-preserve-upstream-error",
+      "kind": "terms",
+      "response": "{\"code\":\"403\",\"msg\":\"access denied\",\"datas\":{\"first\":{\"rows\":[]},\"second\":{\"rows\":[]}}}",
+      "error": "graduate yjs1 request failed: access denied"
+    },
+    {
+      "name": "terms-single-data-set-key-is-opaque",
+      "kind": "terms",
+      "response": "{\"code\":\"0\",\"datas\":{\"unrecognized-name\":{\"rows\":[{\"DM\":\"20252\",\"MC\":\"Term\",\"SFDQXQ\":\"1\"}]}}}",
+      "expected": [
+        {
+          "id": 20252,
+          "code": "20252",
+          "semesterCn": "Term",
+          "semesterEn": "Term",
+          "isLast": true
+        }
+      ]
     }
   ],
   "userIDs": [
