@@ -85,8 +85,8 @@ func yjs1QuerySetting(filters []yjs1Query) string {
 	return string(data)
 }
 
-// parseYJS1Rows retains the existing first-JSON-value decoder and first data set
-// behavior. It does not choose a data-set name or merge multiple data sets.
+// parseYJS1Rows retains the first-JSON-value decoder and accepts one opaque
+// data-set key. Multiple data sets are ambiguous and must not select arbitrary rows.
 func parseYJS1Rows[T any](data []byte) ([]T, error) {
 	var response yjs1RowsResponse[T]
 	if err := json.NewDecoder(bytes.NewReader(data)).Decode(&response); err != nil {
@@ -94,6 +94,9 @@ func parseYJS1Rows[T any](data []byte) ([]T, error) {
 	}
 	if response.Code != "" && response.Code != "0" {
 		return nil, fmt.Errorf("graduate yjs1 request failed: %s", response.Msg)
+	}
+	if len(response.Datas) > 1 {
+		return nil, fmt.Errorf("graduate yjs1 response contains multiple data sets")
 	}
 	for _, set := range response.Datas {
 		return set.Rows, nil
