@@ -15,8 +15,8 @@ concurrency:
 
 jobs:
   go:
-    name: Go tests
-    runs-on: ubuntu-latest
+    name: Go
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     timeout-minutes: 20
     steps:
       - name: Checkout
@@ -41,8 +41,8 @@ jobs:
         run: test -z "$(gofmt -l calendar mobile pagination ustc young)"
 
   apple:
-    name: Apple binding
-    runs-on: macos-26
+    name: Apple
+    runs-on: blacksmith-6vcpu-macos-26
     timeout-minutes: 60
     steps:
       - name: Checkout
