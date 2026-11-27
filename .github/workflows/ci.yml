@@ -2,36 +2,53 @@ name: CI
 
 on:
   push:
+    branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   go:
     name: Go tests
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version-file: go.mod
           cache: true
           cache-dependency-path: mobile/go.sum
-      - run: go test -race -count=1 -coverprofile=coverage.out ./...
-      - run: go vet ./...
-      - run: go test -race -count=1 -coverprofile=coverage.out ./...
+      - name: Test root module with race detector
+        run: go test -race -count=1 ./...
+      - name: Vet root module
+        run: go vet ./...
+      - name: Test mobile module with race detector
+        run: go test -race -count=1 ./...
         working-directory: mobile
-      - run: go vet ./...
+      - name: Vet mobile module
+        run: go vet ./...
         working-directory: mobile
-      - run: test -z "$(gofmt -l calendar mobile pagination ustc young)"
+      - name: Check Go formatting
+        run: test -z "$(gofmt -l calendar mobile pagination ustc young)"
 
   apple:
     name: Apple binding
     runs-on: macos-26
+    timeout-minutes: 60
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version-file: go.mod
           cache: true
